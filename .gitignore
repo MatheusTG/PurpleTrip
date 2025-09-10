@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -7,26 +5,33 @@
 
 # testing
 /coverage
+/.jest-cache
+/.jest
 
-# next.js
+# next.js / react
 /.next/
 /out/
 
-# production
+# production / build
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+*.key
+*.crt
 
-# debug
+# debug / logs
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log
 
 # local env files
 .env*.local
 .env
+.env.test
+.env.development
+.env.production
 
 # vercel
 .vercel
@@ -34,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE / editors
+.vscode/
+
+# docker
+.docker/
+docker-compose.override.yml
