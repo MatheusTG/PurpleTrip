@@ -1,0 +1,26 @@
+{
+  "name": "purpletrip",
+  "version": "1.0.0",
+  "description": "Pasta com o código-fonte do backend da aplicação.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmandaSoaresV/Dw_Etapa5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AmandaSoaresV/Dw_Etapa5/issues"
+  },
+  "homepage": "https://github.com/AmandaSoaresV/Dw_Etapa5#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {}
+}
