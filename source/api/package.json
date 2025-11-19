@@ -20,7 +20,14 @@
   "homepage": "https://github.com/AmandaSoaresV/Dw_Etapa5#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "fastify": "^5.6.2",
+    "pg": "^8.16.3",
     "zod": "^4.1.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/pg": "^8.15.6",
+    "drizzle-kit": "^0.31.7",
+    "tsx": "^4.20.6"
+  }
 }
