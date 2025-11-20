@@ -9,9 +9,9 @@ export default function Footer() {
         <div className={styles.coluna}>
           <Image src="/logo.png" alt="Logo" width={186} height={72} />
           <div className={styles.midias}>
-            <Image src="/facebook-image.svg" alt="" width={40} height={40} />
-            <Image src="/instagram-image.svg" alt="" width={40} height={40} />
-            <Image src="/whatsapp-image.svg" alt="" width={40} height={40} />
+            <Image src="/facebook-image.svg" alt="" width={30} height={30} />
+            <Image src="/instagram-image.svg" alt="" width={30} height={30} />
+            <Image src="/whatsapp-image.svg" alt="" width={30} height={30} />
           </div>
         </div>
         <div className={styles.coluna}>

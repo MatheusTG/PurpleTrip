@@ -1,0 +1,172 @@
+.containerPagina {
+  display: flex;
+  gap: 80px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.titulo {
+  font: var(--font-01-lg-sb);
+  margin-bottom: 25px;
+}
+
+.subtitulo {
+  font: var(--font-01-md-sb);
+}
+
+.datas {
+  font: var(--font-02-sm);
+  color: var(--gray-1000);
+}
+
+.dia {
+  font: var(--font-02-xs);
+  color: var(--gray-1000);
+}
+
+.editar {
+  background-color: var(--primary-900);
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: var(--font-02-xxs);
+}
+.editar:hover {
+  background-color: var(--primary-700);
+}
+
+.textoLogin {
+  margin-top: 25px;
+  font: var(--font-01-md-sb);
+}
+
+.login {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px 0;
+  border-radius: 8px;
+  border: 1px solid #6c3cbf;
+  color: var(--primary-600);
+  cursor: pointer;
+  background: var(--white);
+  font: var(--font-02-xs);
+}
+.login:hover {
+  background: var(--primary-100);
+}
+
+.iconesMidias {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.coluna2 {
+  width: 50%;
+}
+
+.cartao {
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 16px;
+  gap: 15px;
+}
+
+.imagemHotel {
+  border-radius: 10px;
+}
+
+.tituloCartao {
+  font: var(--font-02-md);
+}
+
+.avaliacao {
+  font: var(--font-02-xxs);
+  color: var(--gray-1000);
+  margin: 4px 0;
+}
+
+.icones {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.itemIcone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagamento {
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.tituloPagamento {
+  font: var(--font-02-md);
+  margin-bottom: 6px;
+}
+
+.infoPreco {
+  font: var(--font-01-xxs-sb);
+  color: var(--gray-900);
+}
+
+.detalhesPreco {
+  font: var(--font-02-sm);
+  margin-top: 3px;
+}
+
+.total {
+  font: var(--font-02-sm);
+  margin-top: 8px;
+}
+
+.quartoInformacao {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+}
+.pagamentoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.informacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botaoContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.botaoFinalizar {
+  background-color: var(--primary-800);
+  color: var(--white);
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  font: var(--font-01-xs-sb);
+}
+.botaoFinalizar:hover {
+  background-color: var(--primary-700);
+}
