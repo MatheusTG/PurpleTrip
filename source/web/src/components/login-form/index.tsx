@@ -26,7 +26,7 @@ export default function LoginForm() {
       </div>
       <p>
         Não possui uma conta?{" "}
-        <Link className={styles.cadastro} href="">
+        <Link className={styles.cadastro} href="/register">
           Cadastre-se
         </Link>
       </p>
