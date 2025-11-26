@@ -18,21 +18,21 @@ export class ServiceBase<TEntity extends Record<string, unknown>> implements IEn
   }
 
   async getByIdAsync(id: string): Promise<TEntity> {
-    await this.validadeExists(id);
+    await this.validateExists(id);
     return this.repository.getByIdAsync(id);
   }
 
   async updateAsync(id: string, payload: TEntity): Promise<TEntity> {
-    await this.validadeExists(id);
+    await this.validateExists(id);
     return this.repository.updateAsync(id, payload);
   }
 
   async deleteAsync(id: string): Promise<void> {
-    await this.validadeExists(id);
+    await this.validateExists(id);
     return this.repository.deleteAsync(id);
   }
 
-  private async validadeExists(id: string): Promise<void> {
+  private async validateExists(id: string): Promise<void> {
     const exists = await this.repository.existsAsync(id);
     if (!exists) {
       throw new Error(`Entity with id ${id} does not exist.`);
