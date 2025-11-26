@@ -6,4 +6,11 @@ export class UserService extends ServiceBase<User> {
   constructor() {
     super(new UserRepository());
   }
+
+  override async createAsync(payload: User): Promise<User> {
+    if (await this.repository.existsAsync(payload.email)) {
+      throw new Error(`User with email ${payload.email} already exists.`);
+    }
+    return this.repository.createAsync(payload);
+  }
 }
