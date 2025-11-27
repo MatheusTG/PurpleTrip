@@ -1,4 +1,5 @@
 import { RequestQuerystringDefault } from "fastify";
+import { AppError } from "../errors/app-error";
 import { IEntityRepository } from "../repositories/repository.interface";
 import { IEntityService } from "./service.interface";
 
@@ -35,7 +36,7 @@ export class ServiceBase<TEntity extends Record<string, unknown>> implements IEn
   private async validateExists(id: string): Promise<void> {
     const exists = await this.repository.existsAsync(id);
     if (!exists) {
-      throw new Error(`Entity with id ${id} does not exist.`);
+      throw new AppError(`Entity with id ${id} does not exist.`, 404);
     }
   }
 }

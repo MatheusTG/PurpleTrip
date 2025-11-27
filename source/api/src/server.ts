@@ -1,13 +1,15 @@
-import * as schema from "./infra/db/schema";
-
 import fastify from "fastify";
+import { env } from "./env";
 import { userRoutes } from "./modules/users/user.routes";
+import { setupErrorHandler } from "./shared/handlers/error-handler";
 
-const server = fastify({ logger: true });
+const server = fastify();
 
-const port = 3333;
+const port = env.PORT || 3333;
 
-server.register(userRoutes);
+server.register(userRoutes, { prefix: "/api" });
+
+setupErrorHandler(server);
 
 server.listen({ port }, error => {
   if (error) {

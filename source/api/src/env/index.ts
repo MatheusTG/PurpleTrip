@@ -11,8 +11,7 @@ const _env = envSchema.safeParse(process.env);
 
 if (_env.success === false) {
   console.error("❌ Invalid environment variables", z.treeifyError(_env.error));
-
-  throw new Error("Invalid environment variables.");
+  process.exit(1);
 }
 
 export const env = _env.data;

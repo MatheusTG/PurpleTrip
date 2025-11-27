@@ -1,8 +1,10 @@
+import { eq, InferInsertModel } from "drizzle-orm";
 import { RequestQuerystringDefault } from "fastify";
-import { IEntityRepository } from "./repository.interface";
+import z from "zod";
 import db from "../../infra/database";
 import * as schema from "../../infra/db/schema";
-import { eq, InferInsertModel } from "drizzle-orm";
+import { AppError } from "../errors/app-error";
+import { IEntityRepository } from "./repository.interface";
 
 type SchemaTables = typeof schema;
 type TableFromSchema = SchemaTables[keyof SchemaTables];
@@ -43,10 +45,14 @@ export class RepositoryBase<TEntity> implements IEntityRepository<TEntity> {
   }
 
   async existsAsync(id: string): Promise<boolean> {
-    const rows = await db.select().from(this.table).where(eq(this.table.id, id));
-    if (rows.length > 0) {
-      return true;
+    try {
+      const rows = await db.select().from(this.table).where(eq(this.table.id, id));
+      if (rows.length > 0) return true;
+      return false;
+    } catch (error) {
+      const { success: isUUID } = z.uuid().safeParse(id);
+      if (!isUUID) throw new AppError(`Invalid UUID format: ${id}`, 400);
+      return false;
     }
-    return false;
   }
 }
