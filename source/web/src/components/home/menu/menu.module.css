@@ -1,0 +1,48 @@
+.menuList {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.menuItem {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: 0.5rem;
+
+  width: 6.25rem;
+  height: 7.5rem;
+
+  color: var(--gray-800);
+}
+
+.menuItem:hover,
+.menuItemActive {
+  color: var(--primary-1000);
+}
+
+.menuItem:hover .menuItemLabel,
+.menuItemActive .menuItemLabel {
+  font-weight: 600;
+}
+
+.menuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuItemLabel {
+  font: var(--font-02-sm);
+  color: currentColor;
+}
+
+.menuListBar {
+  position: absolute;
+  width: 6.25rem;
+  height: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--primary-1000);
+  transition: 0.2s;
+  bottom: 0px;
+}

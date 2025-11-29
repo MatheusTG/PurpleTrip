@@ -86,3 +86,7 @@ a {
 ul {
   list-style: none;
 }
+
+.container {
+  padding: 0 5rem;
+}
