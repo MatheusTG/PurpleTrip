@@ -1,0 +1,49 @@
+.tripAddSection {
+  height: 26.25rem;
+  position: relative;
+  background-image: linear-gradient(90deg, var(--primary-1200) 32%, #0c061900);
+  overflow: hidden;
+}
+
+.tripAddImageContainer {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: max-content;
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.tripAddImageList {
+  display: flex;
+}
+
+.tripAddContent {
+  padding-top: 5rem;
+}
+
+.buildingsImage {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.4;
+}
+
+.tripAddDescription {
+  width: 17.5rem;
+  font: var(--font-02-md);
+  color: var(--gray-100);
+}
+
+.TripAddTitle {
+  font: var(--font-01-xl-sb) !important;
+  color: var(--gray-100);
+  margin-bottom: 1.25rem;
+}
+
+.actionButton {
+  display: inline-block;
+  font: var(--font-01-sm-sb);
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--gray-100);
+}
