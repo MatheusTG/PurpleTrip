@@ -83,3 +83,7 @@
 .item {
     color: var(--primary-800)
 }
+.subtitulo{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}

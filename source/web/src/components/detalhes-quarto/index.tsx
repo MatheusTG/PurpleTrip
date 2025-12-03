@@ -1,5 +1,6 @@
 import { AirVent, Coffee, Star, Wifi } from "lucide-react";
 import styles from "./detalhes-quarto.module.css";
+import Comentario from "../comentarios";
 
 export default function DetalhesQuarto() {
   return (
@@ -39,6 +40,10 @@ export default function DetalhesQuarto() {
           <Coffee className={styles.item} /> Café da manhã
         </p>
       </div>
+      <h3 className={styles.subtitulo}>Avaliações dos Hóspedes</h3>
+
+      <Comentario />
+      <Comentario />
     </div>
   );
 }
