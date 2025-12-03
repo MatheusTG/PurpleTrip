@@ -57,3 +57,33 @@
   width: 400px;
   height: 36px;
 }
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .image {
+    display: none;
+  }
+
+  .container {
+    margin-top: 40px;
+    height: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .containerForm {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 12px;
+    gap: 48px;
+  }
+
+  .containerMidias {
+    margin-top: 40px;
+    max-width: 100%;
+  }
+
+  .midias {
+    max-width: 100%;
+  }
+}
