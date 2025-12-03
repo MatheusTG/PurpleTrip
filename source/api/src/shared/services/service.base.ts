@@ -1,6 +1,6 @@
 import { RequestQuerystringDefault } from "fastify";
 import { AppError } from "../errors/app-error";
-import { IEntityRepository } from "../repositories/repository.interface";
+import { ExistsParams, IEntityRepository } from "../repositories/repository.interface";
 import { IEntityService } from "./service.interface";
 
 export class ServiceBase<TEntity extends Record<string, unknown>> implements IEntityService<TEntity> {
@@ -19,22 +19,25 @@ export class ServiceBase<TEntity extends Record<string, unknown>> implements IEn
   }
 
   async getByIdAsync(id: string): Promise<TEntity> {
-    await this.validateExists(id);
+    await this.validateExists({ id });
     return this.repository.getByIdAsync(id);
   }
 
   async updateAsync(id: string, payload: TEntity): Promise<TEntity> {
-    await this.validateExists(id);
+    await this.validateExists({ id });
     return this.repository.updateAsync(id, payload);
   }
 
   async deleteAsync(id: string): Promise<void> {
-    await this.validateExists(id);
+    await this.validateExists({ id });
     return this.repository.deleteAsync(id);
   }
 
-  private async validateExists(id: string): Promise<void> {
-    const exists = await this.repository.existsAsync(id);
+  private async validateExists({ id, email }: ExistsParams): Promise<void> {
+    if (!id && !email) {
+      throw new AppError("Either id or email must be provided to validate existence.", 400);
+    }
+    const exists = await this.repository.existsAsync({ id: id!, email: email! });
     if (!exists) {
       throw new AppError(`Entity with id ${id} does not exist.`, 404);
     }

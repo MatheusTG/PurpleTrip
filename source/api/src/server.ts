@@ -16,5 +16,5 @@ server.listen({ port }, error => {
     console.error("Erro ao iniciar o servidor:", error);
     process.exit(1);
   }
-  console.log("Servidor executando na porta ", port);
+  console.log("Servidor executando na porta", port);
 });

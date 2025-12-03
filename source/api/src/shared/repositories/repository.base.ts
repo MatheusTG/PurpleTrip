@@ -4,7 +4,7 @@ import z from "zod";
 import db from "../../infra/database";
 import * as schema from "../../infra/db/schema";
 import { AppError } from "../errors/app-error";
-import { IEntityRepository } from "./repository.interface";
+import { ExistsParams, IEntityRepository } from "./repository.interface";
 
 type SchemaTables = typeof schema;
 type TableFromSchema = SchemaTables[keyof SchemaTables];
@@ -44,9 +44,12 @@ export class RepositoryBase<TEntity> implements IEntityRepository<TEntity> {
     const rows = await db.delete(this.table).where(eq(this.table.id, id)).returning();
   }
 
-  async existsAsync(id: string): Promise<boolean> {
+  async existsAsync({ id, email }: ExistsParams): Promise<boolean> {
     try {
-      const rows = await db.select().from(this.table).where(eq(this.table.id, id));
+      const rows = await db
+        .select()
+        .from(this.table)
+        .where(id ? eq(this.table.id, id) : eq(this.table.email, email!));
       if (rows.length > 0) return true;
       return false;
     } catch (error) {
