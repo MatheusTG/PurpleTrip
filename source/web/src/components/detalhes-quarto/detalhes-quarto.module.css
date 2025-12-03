@@ -20,70 +20,124 @@
 }
 
 .linha {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .titulo {
-    font: var(--font-01-lg-sb);
+  font: var(--font-01-lg-sb);
 }
 
 .avaliacoes {
-    font: var(--font-02-xxs);
+  font: var(--font-02-xxs);
 }
 
 .span {
-    font: var(--font-02-xs)
+  font: var(--font-02-xs);
 }
 
 .localizacao {
-    font: var(--font-02-sm)
+  font: var(--font-02-sm);
 }
 
 .estrelasContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .descricao {
-    font: var(--font-01-md-sb);
-    color: var(--gray-1000)
+  font: var(--font-01-md-sb);
+  color: var(--gray-1000);
 }
 
 .paragrafo {
-    font: var(--font-02-xs);
+  font: var(--font-02-xs);
+  text-align: justify;
 }
 
 .comodidades {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 20px;
 }
 
 .comodidade {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    font: var(--font-02-xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font: var(--font-02-xs);
 }
 
 .item {
-    color: var(--primary-800)
+  color: var(--primary-800);
 }
-.subtitulo{
-    margin-top: 12px;
-    margin-bottom: 12px;
+
+.subtitulo {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.descricaoContainer {
+    margin-top: 24px
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .linha {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .estrelasContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    gap: 1px;
+  }
+
+  .comodidades {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .descricaoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .avaliacoesContainer {
+    margin-top: 10px;
+  }
+  
 }
