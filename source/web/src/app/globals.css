@@ -90,3 +90,9 @@ ul {
 .container {
   padding: 0 5rem;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: var(--gray-1000);
+}

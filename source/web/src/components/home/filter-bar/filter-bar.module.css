@@ -1,0 +1,110 @@
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 1rem 2rem;
+  width: 57.5rem;
+  border-radius: 0.75rem;
+}
+
+.searchPlaceInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.placeInput {
+  font: var(--font-02-xs);
+  border: none;
+  outline: none;
+}
+
+.placeInput::placeholder {
+  color: var(--gray-1000);
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+}
+
+.stayContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 2.5rem;
+  position: relative;
+}
+
+.stayDates {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dateText {
+  text-align: center;
+  font: var(--font-02-xs);
+  color: var(--gray-1000);
+  width: 5.5rem;
+}
+
+.dateRange {
+  display: none !important;
+  position: absolute;
+}
+
+.dateRangeActive {
+  display: block;
+  position: absolute;
+  left: -1.5rem;
+  top: 2.5rem;
+}
+
+.stayDaysNumberContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 0.75rem;
+  background-color: var(--gray-100);
+  padding: 0.125rem 0.75rem;
+}
+
+.stayDayNumber {
+  font: var(--font-02-xxs);
+}
+
+.peopleAndBedContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 2rem;
+}
+
+.peopleAndBedItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.peopleAndBedInput {
+  border: none;
+  font: var(--font-02-sm);
+  color: var(--gray-800);
+  outline: none;
+}
+
+.peopleAndBedInput::-webkit-inner-spin-button,
+.peopleAndBedInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filterBarButton {
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  background-color: var(--primary-1000);
+  border: none;
+  font: var(--font-01-sm-sb);
+  color: var(--white);
+}
