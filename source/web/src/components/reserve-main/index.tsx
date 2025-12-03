@@ -10,7 +10,7 @@ export default function ReservaPrincipal() {
         <p className={styles.subtitulo}>Sua viagem</p>
 
         <div className={styles.informacao}>
-          <div>
+          <div className={styles.informacao2}>
             <p className={styles.datas}>Datas</p>
             <p className={styles.dia}>08 - 15 de maio</p>
           </div>
@@ -23,16 +23,6 @@ export default function ReservaPrincipal() {
             <p className={styles.dia}>2 hóspedes</p>
           </div>
           <button className={styles.editar}>Editar</button>
-        </div>
-
-        <p className={styles.textoLogin}>Entre ou cadastre-se para reservar</p>
-
-        <button className={styles.login}>Login</button>
-
-        <div className={styles.iconesMidias}>
-          <Image src="/google-icon.png" alt="" width={32} height={32} />
-          <Image src="/facebook-icon.jpg" alt="" width={32} height={32} />
-          <Image src="/apple-icon.jpg" alt="" width={32} height={32} />
         </div>
       </div>
 
@@ -56,7 +46,7 @@ export default function ReservaPrincipal() {
                   <Wifi size={24} color="#2e2e2e" />
                   <p>Wifi</p>
                 </div>
-                <div className={styles.itemIcone}>
+                <div className={`${styles.itemIcone} ${styles.itemMeio}`}>
                   <Fan size={24} color="#2e2e2e" />
                   <p>Ar Condicionado</p>
                 </div>
@@ -80,7 +70,19 @@ export default function ReservaPrincipal() {
             </div>
           </div>
 
-          <div className={styles.botaoContainer}><button className={styles.botaoFinalizar}>Finalizar reserva</button></div>
+          <div className={styles.botaoContainer}>
+            <button className={styles.botaoFinalizar}>Finalizar reserva</button>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.containerLogin}>
+        <p className={styles.textoLogin}>Entre ou cadastre-se para reservar</p>
+        <button className={styles.login}>Login</button>
+        <div className={styles.iconesMidias}>
+          <Image src="/google-icon.png" alt="" width={32} height={32} />
+          <Image src="/facebook-icon.jpg" alt="" width={32} height={32} />
+          <Image src="/apple-icon.jpg" alt="" width={32} height={32} />
         </div>
       </div>
     </div>
