@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
-import { addDays, differenceInDays, format, set } from "date-fns";
+import { addDays, differenceInDays, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { DateRange, Range } from "react-date-range";
@@ -130,7 +130,7 @@ export default function FilterBar() {
                 differenceInDays(
                   dateInterval[0].endDate,
                   dateInterval[0].startDate
-                )}
+                ) + 1}
             </span>
             <div className="icon">
               <SunMoonIcon size={14} color="currentColor" />

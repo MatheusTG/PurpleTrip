@@ -28,7 +28,7 @@
 .moneyInput {
   border: none;
   outline: none;
-  max-width: 2.5rem;
+  width: 100%;
 }
 
 .moneyInput::-webkit-inner-spin-button,

@@ -20,7 +20,9 @@ export default function MoneyInput(props: Props) {
   }
 
   function handleMinus() {
-    setValue(value - 1);
+    if (value > 0) {
+      setValue(value - 1);
+    }
   }
 
   return (
@@ -35,6 +37,7 @@ export default function MoneyInput(props: Props) {
         id={id}
         value={value}
         onChange={({ target }) => handleChange(target.value)}
+        min={0}
       />
       <div className={styles.controls}>
         <ChevronUpIcon size={12} color="currentColor" onClick={handleAdd} />

@@ -1,6 +1,7 @@
 .menuList {
   display: flex;
   gap: 2rem;
+  background-color: var(--white);
   position: relative;
 }
 

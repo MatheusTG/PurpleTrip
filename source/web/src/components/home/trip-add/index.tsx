@@ -5,6 +5,45 @@ import Link from "next/link";
 import styles from "./trip-add.module.css";
 import { useEffect, useState } from "react";
 
+const tripAddData = [
+  {
+    label: "Santuario de la Virgen de los Remedios",
+    title: "México",
+    image: (
+      <Image
+        src={"/trip-image-1.webp"}
+        alt="Imagem de paisagem bonita"
+        width={1040}
+        height={420}
+      />
+    ),
+  },
+  {
+    label: "Aproveite e faça agora sua reserva em Bali",
+    title: "Indonésia",
+    image: (
+      <Image
+        src={"/trip-image-2.webp"}
+        alt="Imagem de paisagem bonita"
+        width={1040}
+        height={420}
+      />
+    ),
+  },
+  {
+    label: "Explore as luzes vibrantes e a cultura de Tóquio",
+    title: "Japão",
+    image: (
+      <Image
+        src={"/trip-image-3.webp"}
+        alt="Imagem de paisagem bonita"
+        width={1040}
+        height={420}
+      />
+    ),
+  },
+];
+
 export default function TripAdd() {
   const [tripAddStep, setTripAddStep] = useState(0);
 
@@ -19,45 +58,6 @@ export default function TripAdd() {
 
     return () => clearTimeout(timer);
   }, [tripAddStep]);
-
-  const tripAddData = [
-    {
-      label: "Santuario de la Virgen de los Remedios",
-      title: "México",
-      image: (
-        <Image
-          src={"/trip-image-1.webp"}
-          alt="Imagem de paisagem bonita"
-          width={1040}
-          height={420}
-        />
-      ),
-    },
-    {
-      label: "Aproveite e faça agora sua reserva em Bali",
-      title: "Indonésia",
-      image: (
-        <Image
-          src={"/trip-image-2.webp"}
-          alt="Imagem de paisagem bonita"
-          width={1040}
-          height={420}
-        />
-      ),
-    },
-    {
-      label: "Explore as luzes vibrantes e a cultura de Tóquio",
-      title: "Japão",
-      image: (
-        <Image
-          src={"/trip-image-3.webp"}
-          alt="Imagem de paisagem bonita"
-          width={1040}
-          height={420}
-        />
-      ),
-    },
-  ];
 
   return (
     <section className={styles.tripAddSection}>
