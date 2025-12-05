@@ -1,0 +1,60 @@
+.filtersContainer {
+  width: 18rem;
+
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  box-shadow: 0.0625rem 0.0625rem 1.25rem rgba(0, 0, 0, 0.1);
+}
+
+.filtersHeader {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: solid 0.0625rem var(--gray-200);
+  margin-bottom: 1.25rem;
+}
+
+.filtersMain {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  gap: 1.5rem;
+  padding: 0 1.5rem 2.5rem 1.5rem;
+}
+
+.filtersTitle {
+  font: var(--font-01-md-sb);
+  color: var(--gray-800);
+}
+
+.filtersSubtitle {
+  font: var(--font-02-xxs);
+  font-weight: 600;
+  color: var(--gray-800);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.moneyInputsContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.starsAmountFilterContainer {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.starsAmountFilterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.starsFilterAmountLabel {
+  font: var(--font-02-xxs);
+  color: var(--gray-800);
+}
+
+.bedCheckboxContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

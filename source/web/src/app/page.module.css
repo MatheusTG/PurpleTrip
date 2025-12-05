@@ -1,5 +1,15 @@
+.listingContainer {
+  background-color: var(--gray-100);
+  padding-bottom: 7.5rem;
+  position: relative;
+  padding-top: 7.5rem;
+}
+
 .filterBarPosition {
-  transform: translateY(-50%);
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
   width: max-content;
   margin: auto;
 }
