@@ -1,0 +1,33 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkboxLabel {
+  font: var(--font-02-xs);
+  color: var(--gray-1000);
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.0625rem var(--gray-600);
+  border-radius: 0.375rem;
+  background-color: var(--white);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.checkboxActive {
+  background-color: var(--green-100);
+  border-color: var(--green-500);
+}
+
+.checkboxIconActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--green-500);
+}
