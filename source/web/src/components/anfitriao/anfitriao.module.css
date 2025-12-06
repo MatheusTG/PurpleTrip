@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: var(--gray-100);
+}
+
+.texto {
+  font: var(--font-01-lg-sb);
+  color: var(--gray-1000);
+  margin-bottom: 20px;
+}
+
+.controlesContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.itensControle {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  padding: 20px 0;
+  background-color: var(--gray-200);
+}
+
+.texto2 {
+  font: var(--font-02-sm);
+  color: var(--black);
+  margin-top: 10px;
+}
+
+.texto3 {
+  font: var(--font-01-lg-sb);
+  color: var(--gray-1000);
+  margin-top: 10px;
+}
+
+.texto1 {
+  font: var(--font-01-md-sb);
+  color: var(--gray-1000);
+  margin-top: 10px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: var(--gray-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header {
+  background: var(--primary-900);
+  color: var(--white);
+  text-align: left;
+}
+
+.header th {
+  padding: 14px 20px;
+  font: var(--font-01-sm-sb);
+}
+
+.tabela td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--black);
+}
+
+.confirmado {
+  color: #3a6b50 !important;
+  font: var(--font-01-sm-sb);
+}
+
+.pendente {
+  color: #e6b838 !important;
+  font: var(--font-01-sm-sb);
+}
+
+.cancelado {
+  color: #f21000 !important;
+  font: var(--font-01-sm-sb);
+}
+
+.botao {
+  width: max-content;
+  background-color: var(--primary-900);
+  border: none;
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font: var(--font-02-sm);
+  margin-top: 32px;
+}
+
+.botao:hover {
+  background-color: var(--primary-800);
+}
+
+.tituloTabela {
+  font: var(--font-01-sm-sb);
+  color: var(--black);
+}
+
+.textoTabela {
+  font: var(--font-02-sm);
+  color: var(--black);
+}

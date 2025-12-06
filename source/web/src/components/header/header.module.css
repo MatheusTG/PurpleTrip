@@ -1,0 +1,37 @@
+.header {
+  background: var(--white);
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.headerPrincipal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.coluna {
+  display: flex;
+  align-items: center;
+}
+
+.coluna2 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ajuda {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color:var(--gray1000);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.usuario {
+  border-radius: 30px;
+  cursor: pointer;
+}
