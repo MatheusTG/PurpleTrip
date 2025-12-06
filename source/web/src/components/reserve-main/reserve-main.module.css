@@ -1,16 +1,20 @@
 .containerPagina {
   display: flex;
-  gap: 80px;
+  flex-wrap: wrap;
+  gap: 0 40px;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 16px;
+  box-sizing: border-box;
 }
 
 .coluna {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
-  width: 40%;
 }
 
 .titulo {
@@ -35,12 +39,13 @@
 .editar {
   background-color: var(--primary-900);
   border: none;
-  color: white;
+  color: var(--white);
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
   font: var(--font-02-xxs);
 }
+
 .editar:hover {
   background-color: var(--primary-700);
 }
@@ -55,12 +60,13 @@
   margin-top: 10px;
   padding: 16px 0;
   border-radius: 8px;
-  border: 1px solid #6c3cbf;
+  border: 1px solid var(--primary-700);
   color: var(--primary-600);
   cursor: pointer;
   background: var(--white);
   font: var(--font-02-xs);
 }
+
 .login:hover {
   background: var(--primary-100);
 }
@@ -75,18 +81,25 @@
 }
 
 .coluna2 {
-  width: 50%;
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
 }
 
 .cartao {
-  border: 1px solid #dcdcdc;
+  border: 1px solid var(--gray-400);
   border-radius: 12px;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
   gap: 15px;
 }
 
 .imagemHotel {
   border-radius: 10px;
+  width: 120px;
+  height: auto;
+  max-width: 150px;
 }
 
 .tituloCartao {
@@ -136,11 +149,17 @@
   margin-top: 8px;
 }
 
+.informacao2 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
 .quartoInformacao {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: auto 1fr;
   gap: 20px;
 }
+
 .pagamentoContainer {
   display: flex;
   justify-content: space-between;
@@ -157,16 +176,71 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .botaoFinalizar {
+  width: 100%;
   background-color: var(--primary-800);
   color: var(--white);
-  padding: 8px 20px;
+  padding: 12px 0;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  margin-left: auto;
   font: var(--font-01-xs-sb);
 }
+
 .botaoFinalizar:hover {
   background-color: var(--primary-700);
+}
+
+@media (max-width: 768px) {
+  .containerPagina {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+  .containerLogin {
+    order: 3;
+  }
+
+  .coluna,
+  .coluna2 {
+    width: 100%;
+  }
+
+  .titulo {
+    font: var(--font-01-lg-sb);
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .subtitulo {
+    font: var(--font-01-md-sb);
+    margin-top: 2px;
+    margin-bottom: 8px;
+  }
+
+  .informacao2 {
+    margin-bottom: 12px;
+  }
+
+  .quartoInformacao {
+    grid-template-columns: 90px 1fr;
+  }
+
+  .imagemHotel {
+    width: 100%;
+    height: auto;
+  }
+
+  .cartao {
+    padding: 16px;
+  }
+
+  .informacao {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .itemMeio {
+    display: none;
+  }
 }

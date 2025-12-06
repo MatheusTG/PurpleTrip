@@ -1,5 +1,6 @@
 import { AirVent, Coffee, Star, Wifi } from "lucide-react";
 import styles from "./detalhes-quarto.module.css";
+import Comentario from "../comentarios";
 
 export default function DetalhesQuarto() {
   return (
@@ -19,7 +20,7 @@ export default function DetalhesQuarto() {
         <p className={styles.avaliacoes}>159 avaliações</p>
       </div>
 
-      <div>
+      <div className={styles.descricaoContainer}>
         <p className={styles.descricao}>Descrição</p>
         <p className={styles.paragrafo}>
           Condomínio fechado com apartamentos modernos, área de lazer com salão
@@ -38,6 +39,11 @@ export default function DetalhesQuarto() {
         <p className={styles.comodidade}>
           <Coffee className={styles.item} /> Café da manhã
         </p>
+      </div>
+      <div className={styles.avaliacoesContainer}>
+        <h3 className={styles.subtitulo}>Avaliações dos Hóspedes</h3>
+        <Comentario />
+        <Comentario />
       </div>
     </div>
   );

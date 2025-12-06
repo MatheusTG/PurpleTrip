@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  gap: 12px;
+  background: var(--gray-200);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.foto {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nome {
+  font-weight: bold;
+  font: var(--font-02-sm);
+}
+
+.texto {
+  font-size: 14px;
+  margin-top: 4px;
+  color: var(--gray-800);
+}

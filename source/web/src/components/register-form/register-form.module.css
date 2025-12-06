@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 400px;
+}
+
+.divInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  height: 74px;
+}
+
+.divNomeSobrenome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  background: rgba(247, 247, 247, 0.2);
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  background: var(--primary-1000);
+  border-radius: 8px;
+  font: var(--font-01-xs-sb);
+  color: var(--white);
+}
+
+.cadastro {
+  color: var(--blue-400);
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .divNomeSobrenome {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%
+  }
+  
+}
