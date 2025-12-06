@@ -1,0 +1,22 @@
+.roomListing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.showMoreButton {
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  color: var(--gray-700);
+  text-align: center;
+  padding: 0.75rem 0;
+  box-shadow: var(--shadow);
+  transition: 0.2s;
+}
+
+.showMoreButton:hover {
+  background-color: var(--gray-100);
+}
