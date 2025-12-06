@@ -10,13 +10,13 @@ export default function FilterAside() {
   const [maxDailyPrice, setMaxDailyPrice] = useState(500);
   const [minStarsAmount, setMinStarsAmount] = useState<StarsAmount>(1);
   const [maxStarsAmount, setMaxStarsAmount] = useState<StarsAmount>(5);
-  const [bedFilter, setBedFilter] = useState({ single: false, double: false });
+  const [bedFilter, setBedFilter] = useState({ single: true, double: false });
   const [animalsFilter, setAnimalsFilter] = useState({
-    accepted: false,
+    accepted: true,
     notAccepted: false,
   });
   const [parkingFilter, setParkingFilter] = useState({
-    included: false,
+    included: true,
     notIncluded: false,
   });
 
@@ -81,7 +81,7 @@ export default function FilterAside() {
             <Checkbox
               id="bed-checkbox"
               label="Casal"
-              check={true}
+              check={bedFilter.double}
               setCheck={(value) =>
                 setBedFilter({ ...bedFilter, double: value })
               }
@@ -95,7 +95,7 @@ export default function FilterAside() {
             <Checkbox
               id="bed-checkbox"
               label="Aceita"
-              check={true}
+              check={animalsFilter.accepted}
               setCheck={(value) =>
                 setAnimalsFilter({ ...animalsFilter, accepted: value })
               }
@@ -103,7 +103,7 @@ export default function FilterAside() {
             <Checkbox
               id="bed-checkbox"
               label="Não aceita"
-              check={true}
+              check={animalsFilter.notAccepted}
               setCheck={(value) =>
                 setAnimalsFilter({ ...animalsFilter, notAccepted: value })
               }
@@ -117,7 +117,7 @@ export default function FilterAside() {
             <Checkbox
               id="bed-checkbox"
               label="Incluso"
-              check={true}
+              check={parkingFilter.included}
               setCheck={(value) =>
                 setParkingFilter({ ...parkingFilter, included: value })
               }
@@ -125,7 +125,7 @@ export default function FilterAside() {
             <Checkbox
               id="bed-checkbox"
               label="Não incluso"
-              check={true}
+              check={parkingFilter.notIncluded}
               setCheck={(value) =>
                 setParkingFilter({ ...parkingFilter, notIncluded: value })
               }

@@ -1,9 +1,9 @@
 .filtersContainer {
-  width: 18rem;
+  height: max-content;
 
   background-color: var(--white);
   border-radius: 0.75rem;
-  box-shadow: 0.0625rem 0.0625rem 1.25rem rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .filtersHeader {

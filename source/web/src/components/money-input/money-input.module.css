@@ -5,6 +5,7 @@
   width: max-content;
   height: 3rem;
   padding: 0 0.75rem;
+  margin-top: 0.25rem;
   border-radius: 0.5rem;
   border: solid 0.0625rem var(--gray-200);
   position: relative;

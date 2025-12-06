@@ -45,7 +45,9 @@
   --font-02-xs: 400 1rem/1.5rem "Roboto", sans-serif;
   --font-01-xxs-sb: 600 0.875rem/1.25rem "Poppins", sans-serif;
   --font-02-xxs: 400 0.875rem/1.25rem "Roboto", sans-serif;
-  --font-02-xxs: 400 0.75rem/1.25rem "Roboto", sans-serif;
+  --font-02-xxxs: 400 0.75rem/1.125rem "Roboto", sans-serif;
+
+  --shadow: 0.0625rem 0.0625rem 1.25rem rgba(0, 0, 0, 0.1);
 
   /* Space Variables */
   --space-none: 0px;
