@@ -1,0 +1,8 @@
+.starList {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.starItem {
+  color: var(--gray-1000);
+}

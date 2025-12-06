@@ -28,7 +28,11 @@
   --primary-1100: #1d0e3a;
   --primary-1200: #0c0619;
 
-  --blue-400: #228BE6;
+  --green-100: #ebffee;
+  --green-500: #007d13;
+  --green-700: #00510c;
+
+  --blue-400: #228be6;
 
   /* Font Variables */
   --font-01-xl-sb: 600 4rem/5rem "Poppins", sans-serif;
@@ -43,7 +47,9 @@
   --font-02-xs: 400 1rem/1.5rem "Roboto", sans-serif;
   --font-01-xxs-sb: 600 0.875rem/1.25rem "Poppins", sans-serif;
   --font-02-xxs: 400 0.875rem/1.25rem "Roboto", sans-serif;
-  --font-02-xxs: 400 0.75rem/1.25rem "Roboto", sans-serif;
+  --font-02-xxxs: 400 0.75rem/1.125rem "Roboto", sans-serif;
+
+  --shadow: 0.0625rem 0.0625rem 1.25rem rgba(0, 0, 0, 0.1);
 
   /* Space Variables */
   --space-none: 0px;
@@ -87,4 +93,14 @@ a {
 }
 ul {
   list-style: none;
+}
+
+.container {
+  padding: 0 5rem;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: var(--gray-1000);
 }

@@ -1,0 +1,158 @@
+.roomItemContainer {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.roomImage {
+  width: 100%;
+  object-fit: cover;
+}
+
+.roomLocationTypeContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  color: var(--primary-1000);
+  background-color: var(--white);
+
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.roomLocationTypeLabel {
+  font: var(--font-02-xxxs);
+}
+
+.roomSale {
+  font: var(--font-02-xs);
+  padding: 0.5rem 1.25rem;
+  border-start-start-radius: 0.75rem;
+  background-color: var(--primary-900);
+  color: var(--white);
+
+  position: absolute;
+  right: 0rem;
+  transform: translateY(-75%);
+}
+
+.roomMain {
+  padding: 1rem;
+}
+
+.roomInformations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: solid 0.0625rem var(--gray-200);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.roomName {
+  font: var(--font-01-sm-sb);
+  color: var(--gray-1000);
+}
+
+.roomRatingAndLocationContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ratingAmount {
+  font: var(--font-02-xxxs);
+  background-color: var(--green-500);
+  color: var(--gray-100);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.ratingLabel {
+  font: var(--font-02-xxs);
+  color: var(--gray-800);
+}
+
+.roomLocationContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--gray-1000);
+}
+
+.roomLocationLabel {
+  font: var(--font-02-xxs);
+  color: var(--gray-1000);
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--gray-1000);
+}
+
+.amenityItemLabel {
+  font: var(--font-02-xxxs);
+}
+
+.paymentAndGuestsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--gray-1000);
+  margin-bottom: 0.5rem;
+}
+
+.payment {
+  display: grid;
+}
+
+.paymentAmount {
+  font: var(--font-01-sm-sb);
+  color: var(--black);
+}
+
+.paymentLabel {
+  font: var(--font-02-xxs);
+  color: var(--black);
+}
+
+.guestsContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.guestsItem {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.roomReserveButton {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 0;
+  border-radius: 0.5rem;
+  color: var(--gray-100);
+  background-color: var(--primary-900);
+  transition: 0.2s;
+}
+
+.roomReserveButton:hover {
+  background-color: var(--primary-1000);
+}

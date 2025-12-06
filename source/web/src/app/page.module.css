@@ -1,0 +1,19 @@
+.listingContainer {
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+  gap: 2.5rem;
+
+  padding-bottom: 7.5rem;
+  padding-top: 7.5rem;
+  background-color: var(--gray-100);
+  position: relative;
+}
+
+.filterBarPosition {
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  width: max-content;
+  margin: auto;
+}
