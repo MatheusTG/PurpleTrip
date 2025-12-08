@@ -2,12 +2,12 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  phone: string;
-  birthDate: Date;
-  photoPath: string;
+  phone?: string | null;
+  birthDate?: Date | string | null;
+  photoPath?: string | null;
   passwordHash: string;
   isBanned: boolean;
   profileType: "QUEST" | "HOST" | "ADMIN";
-  createdAt: number;
-  updatedAt: number;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 };

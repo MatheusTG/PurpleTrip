@@ -28,6 +28,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/pg": "^8.15.6",
     "drizzle-kit": "^0.31.8",
