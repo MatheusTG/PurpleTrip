@@ -1,72 +1,161 @@
 "use client";
 
-import { use, useState } from "react";
+import { register } from "@/services/api/auth";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
 import styles from "./register-form.module.css";
 
 export default function RegisterForm() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function validatePassword(password: string, verifyPassword: string) {
     return password === verifyPassword;
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError("");
+
     if (!validatePassword(password, verifyPassword)) {
-      alert("Senhas diferentes");
+      setError("As senhas não coincidem");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      await register({
+        name,
+        lastName,
+        phone,
+        birthDate,
+        email,
+        password,
+      });
+
+      router.push("/login?registered=true");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro ao criar conta");
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
-    <form className={styles.container} onSubmit={(e) => handleSubmit(e)}>
+    <form className={styles.container} onSubmit={handleSubmit}>
       <div className={styles.divNomeSobrenome}>
         <div className={styles.divInput}>
-          <label htmlFor="text">Nome</label>
-          <input type="text" id="name" name="name" className={styles.input} />
+          <label htmlFor="name">Nome</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+            disabled={isLoading}
+            className={styles.input}
+          />
         </div>
         <div className={styles.divInput}>
-          <label htmlFor="text">Sobrenome</label>
-          <input type="text" id="text" name="text" className={styles.input} />
+          <label htmlFor="lastName">Sobrenome</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+            required
+            disabled={isLoading}
+            className={styles.input}
+          />
         </div>
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="tel">Telefone</label>
-        <input type="tel" id="tel" name="tel" className={styles.input} />
+        <label htmlFor="phone">Telefone</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+          required
+          disabled={isLoading}
+          className={styles.input}
+        />
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="date">Data de nascimento</label>
-        <input type="date" id="date" name="date" className={styles.input} />
+        <label htmlFor="birthDate">Data de nascimento</label>
+        <input
+          type="date"
+          id="birthDate"
+          name="birthDate"
+          value={birthDate}
+          onChange={e => setBirthDate(e.target.value)}
+          required
+          disabled={isLoading}
+          className={styles.input}
+        />
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="date">E-mail</label>
-        <input type="email" id="email" name="email" className={styles.input} />
+        <label htmlFor="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          disabled={isLoading}
+          className={styles.input}
+        />
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="date">Senha</label>
+        <label htmlFor="password">Senha</label>
         <input
           type="password"
           id="password"
           name="password"
           value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          disabled={isLoading}
           className={styles.input}
-          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="date">Confirmar senha</label>
+        <label htmlFor="passwordVerify">Confirmar senha</label>
         <input
           type="password"
           id="passwordVerify"
           name="passwordVerify"
           value={verifyPassword}
+          onChange={e => setVerifyPassword(e.target.value)}
+          required
+          disabled={isLoading}
           className={styles.input}
-          onChange={(e) => setVerifyPassword(e.target.value)}
         />
       </div>
-      <button type="submit" className={styles.button}>
-        Entrar
+      {error && <div className={styles.error}>{error}</div>}
+      <button type="submit" className={styles.button} disabled={isLoading}>
+        {isLoading ? "Registrando..." : "Registrar"}
       </button>
+      <p>
+        Já possui uma conta?{" "}
+        <Link href="/login" className={styles.login}>
+          Entrar
+        </Link>
+      </p>
     </form>
   );
 }
