@@ -1,7 +1,8 @@
 "use client";
 
+import styles from "./informations-form.module.css";
+import genericStyles from "../generic-form-styles.module.css";
 import NumberInput from "@/components/number-input";
-import styles from "./informationsForm.module.css";
 import Select from "@/components/select";
 import { BedDoubleIcon, BedSingleIcon } from "lucide-react";
 import { useState } from "react";
@@ -15,11 +16,11 @@ export default function InformationsForm() {
   return (
     <form className={styles.formContainer}>
       <div className={styles.formColumn}>
-        <div className={styles.inputContainer}>
-          <label className={styles.label} htmlFor="title-input">
+        <div className={genericStyles.inputContainer}>
+          <label className={genericStyles.label} htmlFor="title-input">
             Título
           </label>
-          <input className={styles.input} type="text" id="title-input" />
+          <input className={genericStyles.input} type="text" id="title-input" />
         </div>
 
         <div className={styles.textareaContainer}>
@@ -27,7 +28,7 @@ export default function InformationsForm() {
             Descrição
           </label>
           <textarea
-            className={styles.textareaInput}
+            className={`${genericStyles.input} ${styles.textareaInput}`}
             id="description-input"
             value={description}
             onChange={({ target }) => setDescription(target.value)}
@@ -68,7 +69,7 @@ export default function InformationsForm() {
                 beforeIcon={<BedSingleIcon size={16} color="currentColor" />}
               />
             </div>
-            <button className={styles.nextStepButton}>Próximo</button>
+            <button className={genericStyles.nextStepButton}>Próximo</button>
           </div>
         </div>
       </div>

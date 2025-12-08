@@ -1,0 +1,38 @@
+.formContainer {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.topInputLine {
+  display: grid;
+  grid-template-columns: 5fr 5fr 3fr 5fr;
+  gap: 1.25rem;
+}
+
+.bottomInputLine {
+  display: grid;
+  grid-template-columns: 320fr 264fr 152fr;
+  gap: 1.25rem;
+}
+
+.complementInputContainer {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.complementInput {
+  display: block !important;
+  height: 100% !important;
+  resize: none;
+  padding: 0.75rem !important;
+}
+
+.neighborhoodAndStreetContainer {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.numberAndButtonContainer {
+  display: grid;
+  align-content: space-between;
+}

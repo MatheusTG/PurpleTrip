@@ -4,8 +4,9 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import styles from "./formBase.module.css";
 import Image from "next/image";
+import LocationForm from "../location-form";
 
-export default function FormBase() {
+export default function Form() {
   return (
     <div className={styles.formBaseContainer}>
       <div>
@@ -29,6 +30,7 @@ export default function FormBase() {
             Comodidades e restrições
           </Link>
         </div>
+        <LocationForm />
       </div>
     </div>
   );
