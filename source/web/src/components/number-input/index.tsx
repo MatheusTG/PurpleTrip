@@ -8,10 +8,11 @@ type Props = {
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
   beforeIcon?: ReactNode;
+  AfterValue?: ReactNode;
 };
 
 export default function NumberInput(props: Props) {
-  const { id, label, value, setValue, beforeIcon } = props;
+  const { id, label, value, setValue, beforeIcon, AfterValue } = props;
 
   function handleChange(value: string) {
     setValue(Number(value));
@@ -32,15 +33,18 @@ export default function NumberInput(props: Props) {
       <label className={styles.label} htmlFor={id}>
         {label}
       </label>
-      {beforeIcon && <span className={styles.beforeIcon}>{beforeIcon}</span>}
-      <input
-        className={styles.numberInput}
-        type="number"
-        id={id}
-        value={value}
-        onChange={({ target }) => handleChange(target.value)}
-        min={0}
-      />
+      <div className={styles.inputAndAfterinputContainer}>
+        {beforeIcon && <span className={styles.beforeIcon}>{beforeIcon}</span>}
+        <input
+          className={styles.numberInput}
+          type="number"
+          id={id}
+          value={value}
+          onChange={({ target }) => handleChange(target.value)}
+          min={0}
+        />
+        <span>{AfterValue}</span>
+      </div>
       <div className={styles.controls}>
         <ChevronUpIcon size={12} color="currentColor" onClick={handleAdd} />
         <ChevronDownIcon size={12} color="currentColor" onClick={handleMinus} />

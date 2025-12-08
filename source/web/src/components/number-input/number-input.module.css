@@ -1,5 +1,6 @@
 .numberInputContainer {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   height: 3rem;
@@ -27,6 +28,8 @@
 }
 
 .numberInput {
+  font: var(--font-02-xs);
+  color: var(--gray-800);
   border: none;
   outline: none;
   width: 100%;
@@ -36,6 +39,14 @@
 .numberInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.inputAndAfterinputContainer {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.25rem;
+  font: var(--font-02-xs);
+  color: var(--gray-800);
 }
 
 .controls {
