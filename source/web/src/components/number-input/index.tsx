@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "./money-input.module.css";
+import styles from "./number-input.module.css";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 type Props = {
