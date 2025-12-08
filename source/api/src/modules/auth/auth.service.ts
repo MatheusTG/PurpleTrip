@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions } from "jsonwebtoken";
 import { env } from "../../env";
 import { UserService } from "../users/user.service";
-import { AuthCredentials, AuthPayload } from "./auth.types";
 import { User } from "../users/user.types";
+import { AuthCredentials, AuthPayload } from "./auth.types";
 
 export class AuthService {
   private readonly userService: UserService;
@@ -30,7 +30,7 @@ export class AuthService {
       },
       env.JWT_SECRET,
       {
-        expiresIn: env.JWT_EXPIRES_IN,
+        expiresIn: env.JWT_EXPIRES_IN as SignOptions["expiresIn"],
       }
     );
   }
@@ -41,4 +41,3 @@ export class AuthService {
     return rest;
   }
 }
-
