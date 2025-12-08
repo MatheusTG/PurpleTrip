@@ -1,15 +1,17 @@
+import { ReactNode } from "react";
 import styles from "./money-input.module.css";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 type Props = {
   id: string;
-  label: string;
+  label?: string;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
+  beforeIcon?: ReactNode;
 };
 
-export default function MoneyInput(props: Props) {
-  const { id, label, value, setValue } = props;
+export default function NumberInput(props: Props) {
+  const { id, label, value, setValue, beforeIcon } = props;
 
   function handleChange(value: string) {
     setValue(Number(value));
@@ -26,13 +28,13 @@ export default function MoneyInput(props: Props) {
   }
 
   return (
-    <div className={styles.moneyInputContainer}>
+    <div className={styles.numberInputContainer} style={{ marginTop: label ? "0.25rem" : "" }}>
       <label className={styles.label} htmlFor={id}>
         {label}
       </label>
-      <span className={styles.moneySymbol}>R$</span>
+      {beforeIcon && <span className={styles.beforeIcon}>{beforeIcon}</span>}
       <input
-        className={styles.moneyInput}
+        className={styles.numberInput}
         type="number"
         id={id}
         value={value}

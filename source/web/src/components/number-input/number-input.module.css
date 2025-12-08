@@ -1,11 +1,9 @@
-.moneyInputContainer {
+.numberInputContainer {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  width: max-content;
+  gap: 0.5rem;
   height: 3rem;
   padding: 0 0.75rem;
-  margin-top: 0.25rem;
   border-radius: 0.5rem;
   border: solid 0.0625rem var(--gray-200);
   position: relative;
@@ -20,20 +18,22 @@
   top: -0.625rem;
 }
 
-.moneySymbol {
+.beforeIcon {
+  display: flex;
+  align-items: center;
   font: var(--font-02-xxs);
   font-weight: bold;
   color: var(--gray-800);
 }
 
-.moneyInput {
+.numberInput {
   border: none;
   outline: none;
   width: 100%;
 }
 
-.moneyInput::-webkit-inner-spin-button,
-.moneyInput::-webkit-outer-spin-button {
+.numberInput::-webkit-inner-spin-button,
+.numberInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

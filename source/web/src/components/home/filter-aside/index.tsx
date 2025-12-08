@@ -1,7 +1,7 @@
 "use client";
 import Checkbox from "@/components/checkbox";
 import styles from "./filter-aside.module.css";
-import MoneyInput from "@/components/money-input";
+import NumberInput from "@/components/number-input";
 import Stars, { StarsAmount } from "@/components/stars";
 import { useState } from "react";
 
@@ -30,17 +30,19 @@ export default function FilterAside() {
         <div>
           <h3 className={styles.filtersSubtitle}>Diária</h3>
           <div className={styles.moneyInputsContainer}>
-            <MoneyInput
+            <NumberInput
               id="minDailyPrice"
               label="Min"
               value={minDailyPrice}
               setValue={setMinDailyPrice}
+              beforeIcon="R$"
             />
-            <MoneyInput
+            <NumberInput
               id="maxDailyPrice"
               label="Max"
               value={maxDailyPrice}
               setValue={setMaxDailyPrice}
+              beforeIcon="R$"
             />
           </div>
         </div>
@@ -50,19 +52,11 @@ export default function FilterAside() {
           <div className={styles.starsAmountFilterContainer}>
             <div className={styles.starsAmountFilterItem}>
               <span className={styles.starsFilterAmountLabel}>Min</span>
-              <Stars
-                size={24}
-                starsAmount={minStarsAmount}
-                setStarsAmount={setMinStarsAmount}
-              />
+              <Stars size={24} starsAmount={minStarsAmount} setStarsAmount={setMinStarsAmount} />
             </div>
             <div className={styles.starsAmountFilterItem}>
               <span className={styles.starsFilterAmountLabel}>Max</span>
-              <Stars
-                size={24}
-                starsAmount={maxStarsAmount}
-                setStarsAmount={setMaxStarsAmount}
-              />
+              <Stars size={24} starsAmount={maxStarsAmount} setStarsAmount={setMaxStarsAmount} />
             </div>
           </div>
         </div>
@@ -74,17 +68,13 @@ export default function FilterAside() {
               id="bed-checkbox"
               label="Solteiro"
               check={bedFilter.single}
-              setCheck={(value) =>
-                setBedFilter({ ...bedFilter, single: value })
-              }
+              setCheck={value => setBedFilter({ ...bedFilter, single: value })}
             />
             <Checkbox
               id="bed-checkbox"
               label="Casal"
               check={bedFilter.double}
-              setCheck={(value) =>
-                setBedFilter({ ...bedFilter, double: value })
-              }
+              setCheck={value => setBedFilter({ ...bedFilter, double: value })}
             />
           </div>
         </div>
@@ -96,17 +86,13 @@ export default function FilterAside() {
               id="bed-checkbox"
               label="Aceita"
               check={animalsFilter.accepted}
-              setCheck={(value) =>
-                setAnimalsFilter({ ...animalsFilter, accepted: value })
-              }
+              setCheck={value => setAnimalsFilter({ ...animalsFilter, accepted: value })}
             />
             <Checkbox
               id="bed-checkbox"
               label="Não aceita"
               check={animalsFilter.notAccepted}
-              setCheck={(value) =>
-                setAnimalsFilter({ ...animalsFilter, notAccepted: value })
-              }
+              setCheck={value => setAnimalsFilter({ ...animalsFilter, notAccepted: value })}
             />
           </div>
         </div>
@@ -118,17 +104,13 @@ export default function FilterAside() {
               id="bed-checkbox"
               label="Incluso"
               check={parkingFilter.included}
-              setCheck={(value) =>
-                setParkingFilter({ ...parkingFilter, included: value })
-              }
+              setCheck={value => setParkingFilter({ ...parkingFilter, included: value })}
             />
             <Checkbox
               id="bed-checkbox"
               label="Não incluso"
               check={parkingFilter.notIncluded}
-              setCheck={(value) =>
-                setParkingFilter({ ...parkingFilter, notIncluded: value })
-              }
+              setCheck={value => setParkingFilter({ ...parkingFilter, notIncluded: value })}
             />
           </div>
         </div>
