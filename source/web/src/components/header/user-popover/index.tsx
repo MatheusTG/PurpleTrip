@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@/@types/user";
+import { User } from "@/@types/user.types";
 import Popover from "@/components/ui/popover";
 import { getUser, logout } from "@/utils/auth";
 import Image from "next/image";

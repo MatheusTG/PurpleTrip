@@ -1,4 +1,4 @@
-import { User } from "@/@types/user";
+import { User } from "@/@types/user.types";
 
 export function logout() {
   // Remove token do cookie (é pra funcionar com o middleware)
