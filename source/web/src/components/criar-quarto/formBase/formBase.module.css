@@ -1,0 +1,26 @@
+.formBaseContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 22.5rem;
+}
+
+.formContent {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 1.5rem 2rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbsLink {
+  font: var(--font-02-xxs);
+  color: var(--gray-800);
+}
