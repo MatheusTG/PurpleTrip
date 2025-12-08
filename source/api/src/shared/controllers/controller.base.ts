@@ -1,7 +1,7 @@
-import { IEntityService } from "../services/service.interface";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { IEntityController } from "./controller.interface";
+import { IEntityService } from "../services/service.interface";
 import { IEntityStrategy } from "../strategies/strategy.interface";
+import { IEntityController } from "./controller.interface";
 
 export abstract class ControllerBase<TEntity extends Record<string, unknown>> implements IEntityController<TEntity> {
   service: IEntityService<TEntity>;
@@ -32,7 +32,7 @@ export abstract class ControllerBase<TEntity extends Record<string, unknown>> im
 
   async updateAsync(req: FastifyRequest, reply: FastifyReply): Promise<void> {
     const { id } = req.params as { id: string };
-    const payload = this.strategy.Validate(req.body);
+    const payload = this.strategy.Validate(req.body, true);
     const data = await this.service.updateAsync(id, payload);
     reply.status(200).send({ ok: true, data });
   }

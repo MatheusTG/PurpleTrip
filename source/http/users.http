@@ -1,7 +1,20 @@
 @base_url = http://localhost:3333
 @url = {{base_url}}/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZjllODVjNS1jOWRkLTQxMzEtYTRlMi1iM2UyMDExNzcwNDYiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicHJvZmlsZVR5cGUiOiJRVUVTVCIsImlhdCI6MTc2NTE5ODAyNiwiZXhwIjoxNzY1Mjg0NDI2fQ.eRoI61pF0tUJrNq1-Iel-dgZ-T5h2EyQFxTDorbch-I
+
+###
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.d2oe@example.com",
+  "password": "hashed_password"
+}
+
+###
 
 GET {{url}}/users
+Authorization: Bearer {{token}}
 
 ###
 
