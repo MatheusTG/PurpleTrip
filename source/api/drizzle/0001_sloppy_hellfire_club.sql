@@ -4,6 +4,7 @@ CREATE TABLE "address" (
 	"neighborhood" text NOT NULL,
 	"street" text NOT NULL,
 	"number" text,
+	"complemet" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );

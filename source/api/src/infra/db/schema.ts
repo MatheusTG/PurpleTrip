@@ -18,10 +18,10 @@ export const users = pgTable("users", {
 export const address = pgTable("address", {
   id: uuid("id").primaryKey().defaultRandom(),
   cep: text("cep").notNull(),
-  bairro: text("neighborhood").notNull(),
+  neighborhood: text("neighborhood").notNull(),
   street: text("street").notNull(),
   number: text("number"),
-  complemet: text("number"),
+  complemet: text("complemet"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
