@@ -32,3 +32,13 @@
 .popoverItem:hover {
   background-color: var(--gray-200);
 }
+
+@media (max-width: 768px) {
+  .usuarioContainer span {
+    display: none;
+  }
+
+  .popoverContent {
+    min-width: 130px;
+  }
+}
