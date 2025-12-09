@@ -1,0 +1,32 @@
+.inputContainer {
+  display: grid;
+  gap: 0.125rem;
+  align-content: start;
+}
+
+.label {
+  font: var(--font-02-xs);
+  color: var(--gray-1000);
+}
+
+.input {
+  border-radius: 0.5rem;
+  border: solid 0.0625rem var(--gray-300);
+  height: 3rem;
+  padding: 0 0.75rem;
+  outline: none;
+}
+
+.nextStepButton {
+  font: var(--font-01-xs-sb);
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 100%;
+  border: none;
+  background-color: var(--primary-1000);
+  color: var(--gray-100);
+}
+
+.nextStepButton:hover {
+  background-color: var(--primary-900);
+}
