@@ -1,0 +1,28 @@
+.graficoContainer {
+  width: 100%;
+  max-width: 520px;
+  min-height: 320px;
+  background-color: var(--gray-200);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.titulo {
+  font: var(--font-01-md-sb);
+  color: var(--gray-1000);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .graficoContainer {
+    min-height: 260px;
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .titulo {
+    font: var(--font-01-sm-sb);
+  }
+}
