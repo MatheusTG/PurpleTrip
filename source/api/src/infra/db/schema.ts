@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, date, boolean, pgEnum, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, date, boolean, pgEnum, timestamp, integer } from "drizzle-orm/pg-core";
 
 export const profile_type = pgEnum("profile_type", ["QUEST", "HOST", "ADMIN"]);
 export const users = pgTable("users", {
@@ -22,6 +22,44 @@ export const address = pgTable("address", {
   street: text("street").notNull(),
   number: text("number"),
   complemet: text("complemet"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const roomCategory = pgEnum("room_category", ["house", "hotel", "apartment", "farm", "hostel", "loft"]);
+
+export const cancellationPolicy = pgEnum("cancellation_policy", ["flexible", "moderate", "strict"]);
+
+export const rooms = pgTable("rooms", {
+  id: uuid("id").primaryKey().defaultRandom(),
+
+  ownerId: uuid("owner_id").notNull(),
+  addressId: uuid("address_id").notNull(),
+
+  title: text("title").notNull(),
+  description: text("description"),
+  imagePath: text("image_path"),
+
+  category: roomCategory("category").notNull(),
+
+  doubleBeds: integer("double_beds").notNull().default(0),
+  singleBeds: integer("single_beds").notNull().default(0),
+
+  dailyPrice: integer("daily_price").notNull(),
+
+  cancellationPolicy: cancellationPolicy("cancellation_policy").notNull(),
+
+  minimumStayDays: integer("minimum_stay_days").notNull().default(1),
+  maximumStayDays: text("maximum_stay_days"),
+
+  isBlocked: boolean("is_blocked").notNull().default(false),
+
+  apartmentNumber: text("apartment_number"),
+  maximumGuests: text("maximum_guests"),
+
+  numberOfSingleBed: text("number_of_single_bed"),
+  numberOfDoubleBed: text("number_of_double_bed"),
+
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
