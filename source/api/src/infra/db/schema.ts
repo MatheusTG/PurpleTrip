@@ -49,8 +49,6 @@ export const rooms = pgTable("rooms", {
   isBlocked: boolean("is_blocked").notNull().default(false),
   apartmentNumber: text("apartment_number"),
   maximumGuests: text("maximum_guests"),
-  numberOfSingleBed: text("number_of_single_bed"),
-  numberOfDoubleBed: text("number_of_double_bed"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
