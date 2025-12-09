@@ -5,6 +5,7 @@ import { authRoutes } from "./modules/auth/auth.routes";
 import { userRoutes } from "./modules/users/user.routes";
 import { setupErrorHandler } from "./shared/handlers/error-handler";
 import { addressRoutes } from "./modules/address/address.route";
+import { roomRoutes } from "./modules/room/room.routes";
 
 const server = fastify();
 server.register(cors, {
@@ -16,6 +17,7 @@ const port = env.PORT || 3333;
 server.register(userRoutes, { prefix: "/api" });
 server.register(authRoutes, { prefix: "/api" });
 server.register(addressRoutes, { prefix: "/api" });
+server.register(roomRoutes, { prefix: "api" });
 
 setupErrorHandler(server);
 
