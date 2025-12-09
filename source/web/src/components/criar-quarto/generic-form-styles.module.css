@@ -26,3 +26,7 @@
   background-color: var(--primary-1000);
   color: var(--gray-100);
 }
+
+.nextStepButton:hover {
+  background-color: var(--primary-900);
+}
