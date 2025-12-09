@@ -81,3 +81,15 @@ Content-Type: application/json
   "apartmentNumber": "23B",
   "maximumGuests": 4
 }
+
+###
+
+POST {{url}}/policies HTTP/1.1
+Content-Type: application/json
+
+{
+  "roomId": "fb971033-9606-4179-8b27-fa8af24642fc",
+  "name": "Fumar",
+  "icon": "CigaretteOffIcon",
+  "type": "restriction"
+}
