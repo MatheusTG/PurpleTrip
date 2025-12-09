@@ -4,7 +4,16 @@
   align-items: flex-start;
   gap: 40px;
   width: 400px;
-  height: 284px;
+}
+
+.error {
+  width: 100%;
+  padding: 12px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  color: #c00;
+  font-size: 14px;
 }
 
 .divInput {
@@ -44,10 +53,21 @@
   border-radius: 8px;
   font: var(--font-01-xs-sb);
   color: var(--white);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .cadastro {
-  color: var(--blue-400)
+  color: var(--blue-400);
 }
 
 @media (min-width: 300px) and (max-width: 700px) {
@@ -58,5 +78,4 @@
     gap: 40px;
     width: 100%;
   }
-  
 }

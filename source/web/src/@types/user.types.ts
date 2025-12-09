@@ -11,3 +11,10 @@ export type User = {
   createdAt: Date | number;
   updatedAt: Date | number;
 };
+
+export interface UpdateUserData {
+  name?: string;
+  lastName?: string;
+  phone?: string;
+  birthDate?: string;
+}

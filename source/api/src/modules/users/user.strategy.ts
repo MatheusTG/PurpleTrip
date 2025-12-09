@@ -4,33 +4,39 @@ import { StrategyBase } from "../../shared/strategies/strategy.base";
 import { User } from "./user.types";
 
 export class UserStrategy extends StrategyBase<User> {
-  Validate(body: RequestBodyDefault): User {
+  Validate(body: RequestBodyDefault, isUpdate?: boolean): User {
     super.Validate(body);
     const b = body as Record<string, unknown>;
 
     // Name
-    if (typeof b.name !== "string" || b.name.trim().length === 0) {
+    if (!isUpdate && (typeof b.name !== "string" || b.name.trim().length === 0)) {
       throw new AppError("Property 'name' is required and must be a non-empty string");
     }
 
     // Email
-    if (typeof b.email !== "string" || b.email.trim().length === 0) {
+    if (!isUpdate && (typeof b.email !== "string" || b.email.trim().length === 0)) {
       throw new AppError("Property 'email' is required and must be a non-empty string");
     }
 
     // phone
-    if (typeof b.phone !== "string" || b.phone.trim().length === 0) {
+    if (b.phone !== undefined && (typeof b.phone !== "string" || b.phone.trim().length === 0)) {
       throw new AppError("Property 'phone' must be a non-empty string");
     }
 
     // birthDate
-    if (typeof b.birthDate !== "string" || b.birthDate.trim().length === 0) {
+    if (b.birthDate !== undefined && (typeof b.birthDate !== "string" || b.birthDate.trim().length === 0)) {
       throw new AppError("Property 'birthDate' must be a non-empty string");
     }
 
-    // passwordHash
-    if (typeof b.passwordHash !== "string" || b.passwordHash.trim().length === 0) {
-      throw new AppError("Property 'passwordHash' is required and must be a non-empty string");
+    // password or passwordHash
+    const passwordOrHash = b.password ?? b.passwordHash;
+    if (!isUpdate && (typeof passwordOrHash !== "string" || passwordOrHash.trim().length === 0)) {
+      throw new AppError("Property 'password' is required and must be a non-empty string");
+    }
+
+    const passwordHash = typeof passwordOrHash === "string" ? passwordOrHash : undefined;
+    if (!isUpdate && !passwordHash) {
+      throw new AppError("Property 'password' is required and must be a non-empty string");
     }
 
     // isBanned
@@ -43,6 +49,15 @@ export class UserStrategy extends StrategyBase<User> {
       throw new AppError("Property 'profileType' must be QUEST, HOST, or ADMIN");
     }
 
-    return b as User;
+    const payload = { ...b } as Record<string, unknown>;
+    if (passwordHash) {
+      payload.passwordHash = passwordHash;
+    }
+
+    if (typeof b.birthDate === "string") {
+      payload.birthDate = new Date(b.birthDate);
+    }
+
+    return payload as User;
   }
 }
