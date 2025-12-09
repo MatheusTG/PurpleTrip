@@ -27,9 +27,7 @@ export const address = pgTable("address", {
 });
 
 export const roomCategory = pgEnum("room_category", ["house", "hotel", "apartment", "farm", "hostel", "loft"]);
-
 export const cancellationPolicy = pgEnum("cancellation_policy", ["flexible", "moderate", "strict"]);
-
 export const rooms = pgTable("rooms", {
   id: uuid("id").primaryKey().defaultRandom(),
   ownerId: uuid("owner_id").notNull(),
@@ -49,6 +47,17 @@ export const rooms = pgTable("rooms", {
   maximumGuests: text("maximum_guests"),
   numberOfSingleBed: text("number_of_single_bed"),
   numberOfDoubleBed: text("number_of_double_bed"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const policieType = pgEnum("policie_type", ["amenity", "restriction"]);
+export const policies = pgTable("policies", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  roomId: uuid("owner_id").notNull(),
+  name: text("name").notNull(),
+  icon: text("icon"),
+  type: policieType("policie_type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
