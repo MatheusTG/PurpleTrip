@@ -110,6 +110,15 @@
   background-color: var(--primary-800);
 }
 
+.graficosGrid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 768px) {
   .controlesContainer {
     flex-direction: column;
@@ -131,14 +140,15 @@
 }
 
 .graficoContainer {
-  width: 100%;
-  min-height: 260px;
+  flex: 1;
+  max-width: 520px;
+  min-height: 320px;
   background-color: var(--gray-200);
   border-radius: 14px;
-  padding: 18px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .titulo {

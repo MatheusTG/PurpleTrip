@@ -1,5 +1,6 @@
 import styles from "./anfitriao.module.css";
 import GraficoOcupacao from "../../components/gráficos";
+import GraficoPizzaQuartos from "../../components/gráficos/GraficoPizzaQuartos";
 
 export default function Anfitriao() {
   return (
@@ -23,8 +24,9 @@ export default function Anfitriao() {
         </div>
       </div>
 
-      <div className={styles.graficoWrapper}>
+      <div className={styles.graficosGrid}>
         <GraficoOcupacao />
+        <GraficoPizzaQuartos />
       </div>
 
       <p className={styles.texto1}>Reservas</p>
