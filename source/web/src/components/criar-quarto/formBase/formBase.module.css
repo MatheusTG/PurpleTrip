@@ -23,4 +23,10 @@
 .breadcrumbsLink {
   font: var(--font-02-xxs);
   color: var(--gray-800);
+  background-color: transparent;
+  border: none;
+}
+
+.breadcrumbsLink.active {
+  font-weight: 600;
 }

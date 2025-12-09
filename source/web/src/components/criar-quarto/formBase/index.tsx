@@ -1,12 +1,17 @@
 "use client";
 
 import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import styles from "./formBase.module.css";
 import Image from "next/image";
+import AmenityAndRestrictionsForm from "../amenity-and-restrictions-form";
+import { useState } from "react";
+import InformationsForm from "../informations-form";
 import LocationForm from "../location-form";
+import PricesForm from "../prices-form";
 
 export default function Form() {
+  const [activeForm, setActiveForm] = useState<1 | 2 | 3 | 4>(1);
+
   return (
     <div className={styles.formBaseContainer}>
       <div>
@@ -14,23 +19,38 @@ export default function Form() {
       </div>
       <div className={styles.formContent}>
         <div className={styles.breadcrumbs}>
-          <Link className={styles.breadcrumbsLink} href={"#"}>
+          <button
+            className={`${styles.breadcrumbsLink} ${activeForm === 1 ? styles.active : ""}`}
+            onClick={() => setActiveForm(1)}
+          >
             Informações
-          </Link>
+          </button>
           <ChevronRightIcon size={16} color="currentColor" />
-          <Link className={styles.breadcrumbsLink} href={"#"}>
+          <button
+            className={`${styles.breadcrumbsLink} ${activeForm === 2 ? styles.active : ""}`}
+            onClick={() => setActiveForm(2)}
+          >
             Localização
-          </Link>
+          </button>
           <ChevronRightIcon size={16} color="currentColor" />
-          <Link className={styles.breadcrumbsLink} href={"#"}>
+          <button
+            className={`${styles.breadcrumbsLink} ${activeForm === 3 ? styles.active : ""}`}
+            onClick={() => setActiveForm(3)}
+          >
             Preços e condições
-          </Link>
+          </button>
           <ChevronRightIcon size={16} color="currentColor" />
-          <Link className={styles.breadcrumbsLink} href={"#"}>
+          <button
+            className={`${styles.breadcrumbsLink} ${activeForm === 4 ? styles.active : ""}`}
+            onClick={() => setActiveForm(4)}
+          >
             Comodidades e restrições
-          </Link>
+          </button>
         </div>
-        <LocationForm />
+        {activeForm === 1 && <InformationsForm />}
+        {activeForm === 2 && <LocationForm />}
+        {activeForm === 3 && <PricesForm />}
+        {activeForm === 4 && <AmenityAndRestrictionsForm />}
       </div>
     </div>
   );
