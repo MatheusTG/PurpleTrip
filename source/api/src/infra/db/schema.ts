@@ -54,10 +54,10 @@ export const rooms = pgTable("rooms", {
 export const policieType = pgEnum("policie_type", ["amenity", "restriction"]);
 export const policies = pgTable("policies", {
   id: uuid("id").primaryKey().defaultRandom(),
-  roomId: uuid("owner_id").notNull(),
+  roomId: uuid("room_id").notNull(),
   name: text("name").notNull(),
   icon: text("icon"),
-  type: policieType("policie_type").notNull(),
+  type: policieType("type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

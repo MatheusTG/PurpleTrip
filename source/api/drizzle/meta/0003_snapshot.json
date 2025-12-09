@@ -1,5 +1,5 @@
 {
-  "id": "a8e7e2d1-366c-4afb-8852-821639669ed9",
+  "id": "9d2c10c6-0e0b-47c6-a176-b4af0bd8ca21",
   "prevId": "ee1cf6e3-07e9-4058-aa1d-341ac63382df",
   "version": "7",
   "dialect": "postgresql",
@@ -79,8 +79,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "owner_id": {
-          "name": "owner_id",
+        "room_id": {
+          "name": "room_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -97,8 +97,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "policie_type": {
-          "name": "policie_type",
+        "type": {
+          "name": "type",
           "type": "policie_type",
           "typeSchema": "public",
           "primaryKey": false,
