@@ -30,8 +30,12 @@ export const roomCategory = pgEnum("room_category", ["house", "hotel", "apartmen
 export const cancellationPolicy = pgEnum("cancellation_policy", ["flexible", "moderate", "strict"]);
 export const rooms = pgTable("rooms", {
   id: uuid("id").primaryKey().defaultRandom(),
-  ownerId: uuid("owner_id").notNull(),
-  addressId: uuid("address_id").notNull(),
+  ownerId: uuid("owner_id")
+    .references(() => users.id)
+    .notNull(),
+  addressId: uuid("address_id")
+    .references(() => address.id)
+    .notNull(),
   title: text("title").notNull(),
   description: text("description"),
   imagePath: text("image_path"),
@@ -54,7 +58,9 @@ export const rooms = pgTable("rooms", {
 export const policieType = pgEnum("policie_type", ["amenity", "restriction"]);
 export const policies = pgTable("policies", {
   id: uuid("id").primaryKey().defaultRandom(),
-  roomId: uuid("room_id").notNull(),
+  roomId: uuid("room_id")
+    .references(() => rooms.id)
+    .notNull(),
   name: text("name").notNull(),
   icon: text("icon"),
   type: policieType("type").notNull(),
