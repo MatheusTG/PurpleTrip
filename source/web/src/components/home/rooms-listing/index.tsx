@@ -20,7 +20,8 @@ export default function RoomListing({ data, message }: Props) {
           </li>
         ))}
       </ul>
-      <button className={styles.showMoreButton}>Mostrar mais</button>
+
+      {/* {data.length > 0 && <button className={styles.showMoreButton}>Mostrar mais</button>} */}
     </div>
   );
 }

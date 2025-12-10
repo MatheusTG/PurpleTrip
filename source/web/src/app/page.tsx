@@ -13,6 +13,8 @@ type Props = {
     maxPrice?: string;
     singleBed?: string;
     doubleBed?: string;
+    stayDays?: string;
+    title?: string;
   }>;
 };
 
@@ -22,12 +24,16 @@ export default async function Home({ searchParams }: Props) {
   const maxPrice = params.maxPrice ? Number(params.maxPrice) : undefined;
   const singleBed = params.singleBed === "1" ? true : params.singleBed === "0" ? false : undefined;
   const doubleBed = params.doubleBed === "1" ? true : params.doubleBed === "0" ? false : undefined;
+  const stayDays = params.stayDays ? Number(params.stayDays) : undefined;
+  const title = params.title;
 
   const queryString = new URLSearchParams();
   if (minPrice !== undefined) queryString.append("minPrice", String(minPrice));
   if (maxPrice !== undefined) queryString.append("maxPrice", String(maxPrice));
   if (singleBed !== undefined) queryString.append("singleBed", singleBed ? "1" : "0");
   if (doubleBed !== undefined) queryString.append("doubleBed", doubleBed ? "1" : "0");
+  if (stayDays !== undefined) queryString.append("stayDays", String(stayDays));
+  if (title) queryString.append("title", title);
 
   const {
     data: rooms,

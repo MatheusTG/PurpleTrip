@@ -37,6 +37,7 @@ export async function apiClient<T>(endpoint: string, options: RequestOptions = {
     });
 
     if (!response.ok) {
+      console.log(response);
       const errorData = await response.json().catch(() => ({
         message: `Erro na requisição: ${response.status}`,
       }));
@@ -55,6 +56,14 @@ export async function apiClient<T>(endpoint: string, options: RequestOptions = {
     const data = await response.json();
     return { data: data.data };
   } catch (error) {
-    return { message: error instanceof Error ? error.message : "Erro de conexão com o servidor", status: 500 };
+    return {
+      message:
+        error instanceof Error
+          ? error.message.toLowerCase() == "fetch failed"
+            ? "Erro de conexão com o servidor"
+            : error.message
+          : "Erro de conexão com o servidor",
+      status: 500,
+    };
   }
 }

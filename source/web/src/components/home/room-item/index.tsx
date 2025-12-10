@@ -58,6 +58,12 @@ export default function RoomItem(props: Props) {
               </li>
             </ul>
           )}
+
+          <div className={styles.stayDaysInfo}>
+            <span className={styles.stayDaysLabel}>
+              Estadia: {data.minimumStayDays || 1} - {data.maximumStayDays || 30} dias
+            </span>
+          </div>
         </div>
         <div className={styles.paymentAndGuestsContainer}>
           <div className={styles.payment}>
@@ -75,7 +81,7 @@ export default function RoomItem(props: Props) {
             </div>
           </div>
         </div>
-        <Link className={styles.roomReserveButton} href="#">
+        <Link className={styles.roomReserveButton} href="/reserva">
           Reservar
         </Link>
       </div>

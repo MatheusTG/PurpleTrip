@@ -4,7 +4,7 @@ import styles from "./filter-bar.module.css";
 
 import { ArrowRightIcon, BedDoubleIcon, CalendarDaysIcon, SearchIcon, SunMoonIcon, UserIcon } from "lucide-react";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
@@ -32,6 +32,8 @@ export default function FilterBar() {
 
   const stayContainerRef = useRef<HTMLDivElement | null>(null);
 
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
@@ -48,7 +50,21 @@ export default function FilterBar() {
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    router.push("?teste=2");
+
+    const stayDays =
+      dateInterval[0].startDate && dateInterval[0].endDate
+        ? differenceInDays(dateInterval[0].endDate, dateInterval[0].startDate) + 1
+        : 0;
+    const params = new URLSearchParams(searchParams);
+
+    params.set("stayDays", stayDays.toString() || "2");
+    if (placeInputValue) params.set("title", placeInputValue);
+
+    const oldUrl = window.location.href;
+    const newUrl = pathname + `?${params.toString()}`;
+    if (oldUrl === newUrl) return;
+
+    router.push(newUrl, { scroll: false });
   }
 
   function transformDateToString(date: Date) {
