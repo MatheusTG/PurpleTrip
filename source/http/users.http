@@ -66,20 +66,39 @@ Content-Type: application/json
 
 {
   "ownerId": "810ca5ab-bd46-4936-a57c-e0d9805bc49a",
+  "title": "Apartamento Vista Mar",
   "addressId": "3465eca3-a167-4dcc-8652-cca39762893a",
-  "title": "Cozy Apartment with City View",
-  "description": "A comfortable apartment located near downtown with great natural lighting.",
-  "imagePath": "images/rooms/apt1.jpg",
+  "description": "Apartamento moderno com sacada e visão panorâmica do mar.",
+  "imagePath": "/uploads/rooms/apto-vista-mar.jpg",
   "category": "apartment",
-  "doubleBeds": 1,
   "singleBeds": 2,
-  "dailyPrice": 180,
-  "cancellationPolicy": "moderate",
+  "doubleBeds": 1,
+  "dailyPrice": 350,
+  "cancellationPolicy": "flexible",
   "minimumStayDays": 2,
-  "maximumStayDays": 15,
+  "maximumStayDays": 10,
   "isBlocked": false,
-  "apartmentNumber": "23B",
-  "maximumGuests": 4
+  "apartmentNumber": "1204",
+  "maximumGuests": 4,
+  "address": {
+    "cep": "88010-100",
+    "neighborhood": "Centro",
+    "street": "Av. Atlântica",
+    "number": "450",
+    "complement": "Bloco B"
+  },
+  "policies": [
+    {
+      "name": "Wi-Fi",
+      "icon": "wifi",
+      "type": "amenity"
+    },
+    {
+      "name": "Proibido fumar",
+      "icon": "no_smoke",
+      "type": "restriction"
+    }
+  ]
 }
 
 ###

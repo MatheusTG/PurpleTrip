@@ -1,6 +1,6 @@
 export type Policie = {
   id: string;
-  room_id: string;
+  roomId: string;
   name: string;
   icon?: string;
   type: "amenity" | "restriction";
