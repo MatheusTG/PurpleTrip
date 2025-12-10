@@ -5,8 +5,43 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1763510828255,
-      "tag": "0000_tough_bill_hollister",
+      "when": 1765301681099,
+      "tag": "0000_sad_siren",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1765304452088,
+      "tag": "0001_sloppy_hellfire_club",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765305738589,
+      "tag": "0002_violet_human_fly",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765310448448,
+      "tag": "0003_rapid_betty_ross",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1765319850893,
+      "tag": "0004_big_wong",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1765324629173,
+      "tag": "0005_giant_dagger",
       "breakpoints": true
     }
   ]

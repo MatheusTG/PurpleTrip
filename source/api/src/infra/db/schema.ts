@@ -1,5 +1,6 @@
-import { pgTable, uuid, text, date, boolean, pgEnum, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, date, boolean, pgEnum, timestamp, integer } from "drizzle-orm/pg-core";
 
+export const profile_type = pgEnum("profile_type", ["QUEST", "HOST", "ADMIN"]);
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
@@ -9,7 +10,58 @@ export const users = pgTable("users", {
   photoPath: text("photo_path"),
   passwordHash: text("password_hash").notNull(),
   isBanned: boolean("is_banned").notNull().default(false),
-  profileType: pgEnum("profile_type", ["QUEST", "HOST", "ADMIN"])().notNull().default("QUEST"),
+  profileType: profile_type("profile_type").notNull().default("QUEST"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const address = pgTable("address", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  cep: text("cep").notNull(),
+  neighborhood: text("neighborhood").notNull(),
+  street: text("street").notNull(),
+  number: text("number"),
+  complemet: text("complemet"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const roomCategory = pgEnum("room_category", ["house", "hotel", "apartment", "farm", "hostel", "loft"]);
+export const cancellationPolicy = pgEnum("cancellation_policy", ["flexible", "moderate", "strict"]);
+export const rooms = pgTable("rooms", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  ownerId: uuid("owner_id")
+    .references(() => users.id)
+    .notNull(),
+  addressId: uuid("address_id")
+    .references(() => address.id)
+    .notNull(),
+  title: text("title").notNull(),
+  description: text("description"),
+  imagePath: text("image_path"),
+  category: roomCategory("category").notNull(),
+  doubleBeds: integer("double_beds").notNull().default(0),
+  singleBeds: integer("single_beds").notNull().default(0),
+  dailyPrice: integer("daily_price").notNull(),
+  cancellationPolicy: cancellationPolicy("cancellation_policy").notNull(),
+  minimumStayDays: integer("minimum_stay_days").notNull().default(1),
+  maximumStayDays: text("maximum_stay_days"),
+  isBlocked: boolean("is_blocked").notNull().default(false),
+  apartmentNumber: text("apartment_number"),
+  maximumGuests: text("maximum_guests"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const policieType = pgEnum("policie_type", ["amenity", "restriction"]);
+export const policies = pgTable("policies", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  roomId: uuid("room_id")
+    .references(() => rooms.id)
+    .notNull(),
+  name: text("name").notNull(),
+  icon: text("icon"),
+  type: policieType("type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

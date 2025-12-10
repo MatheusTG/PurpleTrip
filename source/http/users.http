@@ -45,3 +45,70 @@ Content-Type: application/json
 ###
 
 DELETE {{url}}/users/434c5fa1-b971-482a-b2b7-b92a21e58044 HTTP/1.1
+
+###
+
+POST {{url}}/address HTTP/1.1
+Content-Type: application/json
+
+{
+  "cep": "87260000",
+  "neighborhood": "lirial de São Luiz",
+  "street": "Rodovia Bento Fernandes Dias",
+  "number": "R1",
+  "complement": "Sítio"
+}
+
+###
+
+POST {{url}}/room HTTP/1.1
+Content-Type: application/json
+
+{
+  "ownerId": "810ca5ab-bd46-4936-a57c-e0d9805bc49a",
+  "title": "Apartamento Vista Mar",
+  "addressId": "3465eca3-a167-4dcc-8652-cca39762893a",
+  "description": "Apartamento moderno com sacada e visão panorâmica do mar.",
+  "imagePath": "/uploads/rooms/apto-vista-mar.jpg",
+  "category": "apartment",
+  "singleBeds": 2,
+  "doubleBeds": 1,
+  "dailyPrice": 350,
+  "cancellationPolicy": "flexible",
+  "minimumStayDays": 2,
+  "maximumStayDays": 10,
+  "isBlocked": false,
+  "apartmentNumber": "1204",
+  "maximumGuests": 4,
+  "address": {
+    "cep": "88010-100",
+    "neighborhood": "Centro",
+    "street": "Av. Atlântica",
+    "number": "450",
+    "complement": "Bloco B"
+  },
+  "policies": [
+    {
+      "name": "Wi-Fi",
+      "icon": "wifi",
+      "type": "amenity"
+    },
+    {
+      "name": "Proibido fumar",
+      "icon": "no_smoke",
+      "type": "restriction"
+    }
+  ]
+}
+
+###
+
+POST {{url}}/policies HTTP/1.1
+Content-Type: application/json
+
+{
+  "roomId": "fb971033-9606-4179-8b27-fa8af24642fc",
+  "name": "Fumar",
+  "icon": "CigaretteOffIcon",
+  "type": "restriction"
+}

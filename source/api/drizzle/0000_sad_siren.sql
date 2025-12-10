@@ -8,7 +8,7 @@ CREATE TABLE "users" (
 	"photo_path" text,
 	"password_hash" text NOT NULL,
 	"is_banned" boolean DEFAULT false NOT NULL,
-	"profileType" "profile_type" DEFAULT 'QUEST' NOT NULL,
+	"profile_type" "profile_type" DEFAULT 'QUEST' NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "users_email_unique" UNIQUE("email")
