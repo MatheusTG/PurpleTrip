@@ -59,6 +59,8 @@
 .descricao {
   font: var(--font-01-md-sb);
   color: var(--gray-1000);
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .paragrafo {
