@@ -26,3 +26,13 @@ export type RoomResponse = Room & {
   address: Address;
   policies: Policie[];
 };
+
+export type RoomFilters = {
+  minPrice?: string;
+  maxPrice?: string;
+  guestsNumber?: string;
+  stayDays?: string;
+  singleBeds?: string;
+  doubleBeds?: string;
+  title?: Room["title"];
+};
