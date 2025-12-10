@@ -1,0 +1,42 @@
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.subtitle {
+  font: var(--font-01-xs-sb);
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+}
+
+.itemList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: solid 0.0625rem var(--gray-900);
+  border-radius: 0.5rem;
+  color: var(--gray-900);
+}
+
+.item.active {
+  background-color: var(--gray-900);
+  color: var(--gray-100);
+}
+
+.itemLabel {
+  font: var(--font-02-xs);
+}
+
+.button {
+  grid-column: 2;
+  justify-self: end;
+  padding: 0.75rem 2rem;
+  width: max-content !important;
+}

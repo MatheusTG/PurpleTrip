@@ -1,0 +1,9 @@
+.criarQuartoContainer {
+  margin-top: 2rem;
+}
+
+.title {
+  font: var(--font-01-lg-sb);
+  color: var(--gray-1000);
+  margin-bottom: 1.5rem;
+}

@@ -17,7 +17,7 @@
 }
 
 .itensControle {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,14 +38,24 @@
   margin-top: 10px;
 }
 
+.graficoWrapper {
+  margin-top: 20px;
+}
+
 .texto1 {
   font: var(--font-01-md-sb);
   color: var(--gray-1000);
-  margin-top: 10px;
+  margin-top: 30px;
+}
+
+.tabelaWrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tabela {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   margin-top: 10px;
   background: var(--gray-200);
@@ -100,12 +110,48 @@
   background-color: var(--primary-800);
 }
 
-.tituloTabela {
-  font: var(--font-01-sm-sb);
-  color: var(--black);
+.graficosGrid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.textoTabela {
-  font: var(--font-02-sm);
-  color: var(--black);
+@media (max-width: 768px) {
+  .controlesContainer {
+    flex-direction: column;
+  }
+
+  .itensControle {
+    width: 100%;
+  }
+
+  .botao {
+    width: 100%;
+  }
+
+  .header th,
+  .tabela td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+.graficoContainer {
+  flex: 1;
+  max-width: 520px;
+  min-height: 320px;
+  background-color: var(--gray-200);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.titulo {
+  font: var(--font-01-sm-sb);
+  color: var(--gray-1000);
 }
