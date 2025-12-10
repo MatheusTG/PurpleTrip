@@ -2,6 +2,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import type { Metadata } from "next";
 import { Poppins, Roboto } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -28,7 +29,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} ${roboto.className}`}>
         <Header />
-        <main>{children}</main>
+        <main>
+          <Suspense fallback={<div>Carregando...</div>}>{children}</Suspense>
+        </main>
         <Footer />
       </body>
     </html>
