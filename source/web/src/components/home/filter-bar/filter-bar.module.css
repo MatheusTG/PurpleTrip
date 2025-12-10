@@ -5,18 +5,34 @@
   padding: 1rem 2rem;
   width: 57.5rem;
   border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.formContainer:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .searchPlaceInputContainer {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: 0.2s ease;
+  cursor: text;
+}
+
+.searchPlaceInputContainer:hover,
+.searchPlaceInputContainer:focus-within {
+  background-color: var(--gray-100);
 }
 
 .placeInput {
   font: var(--font-02-xs);
   border: none;
   outline: none;
+  background: transparent;
 }
 
 .placeInput::placeholder {
@@ -34,6 +50,15 @@
   gap: 0.75rem;
   margin-right: 2.5rem;
   position: relative;
+  z-index: 10;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.stayContainer:hover {
+  background-color: var(--gray-100);
 }
 
 .stayDates {
@@ -59,6 +84,9 @@
   position: absolute;
   left: -1.5rem;
   top: 2.5rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
 }
 
 .stayDaysNumberContainer {
@@ -107,4 +135,10 @@
   border: none;
   font: var(--font-01-sm-sb);
   color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterBarButton:hover {
+  background-color: var(--primary-900, #5a1f8a);
 }

@@ -1,9 +1,12 @@
 "use client";
+
 import Checkbox from "@/components/checkbox";
-import styles from "./filter-aside.module.css";
 import NumberInput from "@/components/number-input";
 import Stars, { StarsAmount } from "@/components/stars";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import styles from "./filter-aside.module.css";
 
 export default function FilterAside() {
   const [minDailyPrice, setMinDailyPrice] = useState(100);
@@ -20,6 +23,24 @@ export default function FilterAside() {
     notIncluded: false,
   });
 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const handleFilterChange = useDebouncedCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set("minPrice", String(minDailyPrice));
+    params.set("maxPrice", String(maxDailyPrice));
+    params.set("singleBed", bedFilter.single ? "1" : "0");
+    params.set("doubleBed", bedFilter.double ? "1" : "0");
+
+    const oldUrl = window.location.href;
+    const newUrl = pathname + `?${params.toString()}`;
+    if (oldUrl === newUrl) return;
+
+    router.push(newUrl, { scroll: false });
+  }, 300);
+
   return (
     <aside className={styles.filtersContainer}>
       <header className={styles.filtersHeader}>
@@ -34,14 +55,14 @@ export default function FilterAside() {
               id="minDailyPrice"
               label="Min"
               value={minDailyPrice}
-              setValue={setMinDailyPrice}
+              setValue={v => setMinDailyPrice(v)}
               beforeIcon="R$"
             />
             <NumberInput
               id="maxDailyPrice"
               label="Max"
               value={maxDailyPrice}
-              setValue={setMaxDailyPrice}
+              setValue={v => setMaxDailyPrice(v)}
               beforeIcon="R$"
             />
           </div>
@@ -113,6 +134,12 @@ export default function FilterAside() {
               setCheck={value => setParkingFilter({ ...parkingFilter, notIncluded: value })}
             />
           </div>
+        </div>
+
+        <div>
+          <button className={styles.applyFiltersButton} type="button" onClick={handleFilterChange}>
+            Aplicar filtros
+          </button>
         </div>
       </main>
     </aside>

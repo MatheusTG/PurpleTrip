@@ -58,3 +58,28 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.applyFiltersButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.75rem 0;
+  border-radius: 0.5rem;
+  color: var(--gray-100);
+  background-color: var(--primary-900);
+  transition: 0.2s;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.applyFiltersButton:hover {
+  background-color: var(--primary-1000);
+}
+
+.applyFiltersButton:active {
+  transform: scale(0.98);
+}

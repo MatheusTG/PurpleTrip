@@ -2,14 +2,7 @@
 
 import styles from "./filter-bar.module.css";
 
-import {
-  ArrowRightIcon,
-  BedDoubleIcon,
-  CalendarDaysIcon,
-  SearchIcon,
-  SunMoonIcon,
-  UserIcon,
-} from "lucide-react";
+import { ArrowRightIcon, BedDoubleIcon, CalendarDaysIcon, SearchIcon, SunMoonIcon, UserIcon } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
@@ -19,7 +12,9 @@ import { addDays, differenceInDays, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { DateRange, Range } from "react-date-range";
+// @ts-expect-error erro no tsconfig
 import "react-date-range/dist/styles.css";
+// @ts-expect-error erro no tsconfig
 import "react-date-range/dist/theme/default.css";
 
 export default function FilterBar() {
@@ -41,11 +36,7 @@ export default function FilterBar() {
 
   useEffect(() => {
     function handleCLick(event: MouseEvent) {
-      if (
-        isCalendarActive &&
-        event.target &&
-        !stayContainerRef.current?.contains(event.target as Node)
-      ) {
+      if (isCalendarActive && event.target && !stayContainerRef.current?.contains(event.target as Node)) {
         setIsCalendarActive(false);
       }
     }
@@ -96,51 +87,34 @@ export default function FilterBar() {
       </div>
 
       <div className={styles.rightSide}>
-        <div
-          ref={stayContainerRef}
-          className={styles.stayContainer}
-          onClick={() => setIsCalendarActive(true)}
-        >
+        <div ref={stayContainerRef} className={styles.stayContainer} onClick={() => setIsCalendarActive(true)}>
           <div className="icon">
             <CalendarDaysIcon size={24} color="currentColor" />
           </div>
           <div className={styles.stayDates}>
             <span className={styles.dateText}>
-              {transformDateToString(
-                dateInterval[0].startDate
-                  ? new Date(dateInterval[0].startDate)
-                  : new Date()
-              )}
+              {transformDateToString(dateInterval[0].startDate ? new Date(dateInterval[0].startDate) : new Date())}
             </span>
             <div>
               <ArrowRightIcon size={16} color="currentColor" />
             </div>
             <span className={styles.dateText}>
-              {transformDateToString(
-                dateInterval[0].endDate
-                  ? new Date(dateInterval[0].endDate)
-                  : new Date()
-              )}
+              {transformDateToString(dateInterval[0].endDate ? new Date(dateInterval[0].endDate) : new Date())}
             </span>
           </div>
           <div className={styles.stayDaysNumberContainer}>
             <span className={styles.stayDayNumber}>
               {dateInterval[0].startDate &&
                 dateInterval[0].endDate &&
-                differenceInDays(
-                  dateInterval[0].endDate,
-                  dateInterval[0].startDate
-                ) + 1}
+                differenceInDays(dateInterval[0].endDate, dateInterval[0].startDate) + 1}
             </span>
             <div className="icon">
               <SunMoonIcon size={14} color="currentColor" />
             </div>
           </div>
           <DateRange
-            className={`${
-              isCalendarActive ? styles.dateRangeActive : styles.dateRange
-            }`}
-            onChange={(item) => setDateInterval([item.selection])}
+            className={`${isCalendarActive ? styles.dateRangeActive : styles.dateRange}`}
+            onChange={item => setDateInterval([item.selection])}
             ranges={dateInterval}
             direction="horizontal"
             locale={
@@ -149,15 +123,7 @@ export default function FilterBar() {
                 localize: {
                   ...ptBR.localize,
                   day: (n: number) => {
-                    const dias = [
-                      "dom",
-                      "seg",
-                      "ter",
-                      "qua",
-                      "qui",
-                      "sex",
-                      "sáb",
-                    ];
+                    const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
                     return dias[n];
                   },
                 },

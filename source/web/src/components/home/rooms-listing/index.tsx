@@ -1,20 +1,20 @@
 "use client";
 
-import styles from "./room-listing.module.css";
-import RoomItem from "../room-item";
 import { Room } from "@/@types/room";
+import RoomItem from "../room-item";
+import styles from "./room-listing.module.css";
 
 type Props = {
   data: Room[];
+  message?: string;
 };
 
-export default function RoomListing(props: Props) {
-  const { data } = props;
-
+export default function RoomListing({ data, message }: Props) {
   return (
     <div>
+      {message && <div className={styles.message}>{message}</div>}
       <ul className={styles.roomListing}>
-        {data.map((room) => (
+        {data.map(room => (
           <li key={room.id}>
             <RoomItem data={room} />
           </li>
