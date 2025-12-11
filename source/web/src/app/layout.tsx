@@ -3,6 +3,8 @@ import Header from "@/components/header";
 import type { Metadata } from "next";
 import { Poppins, Roboto } from "next/font/google";
 import { Suspense } from "react";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import "./globals.css";
 
 const poppins = Poppins({

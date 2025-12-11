@@ -12,10 +12,6 @@ import { addDays, differenceInDays, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { DateRange, Range } from "react-date-range";
-// @ts-expect-error erro no tsconfig
-import "react-date-range/dist/styles.css";
-// @ts-expect-error erro no tsconfig
-import "react-date-range/dist/theme/default.css";
 
 export default function FilterBar() {
   const [isCalendarActive, setIsCalendarActive] = useState(false);
@@ -36,18 +32,6 @@ export default function FilterBar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => {
-    function handleCLick(event: MouseEvent) {
-      if (isCalendarActive && event.target && !stayContainerRef.current?.contains(event.target as Node)) {
-        setIsCalendarActive(false);
-      }
-    }
-
-    if (isCalendarActive) {
-      window.addEventListener("click", handleCLick);
-    }
-  }, [isCalendarActive]);
-
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
@@ -64,6 +48,15 @@ export default function FilterBar() {
     const newUrl = pathname + `?${params.toString()}`;
     if (oldUrl === newUrl) return;
 
+    router.push(newUrl, { scroll: false });
+  }
+
+  function deleteTitleParam() {
+    const params = new URLSearchParams(searchParams);
+    params.delete("title");
+    const oldUrl = window.location.href;
+    const newUrl = pathname + `?${params.toString()}`;
+    if (oldUrl === newUrl) return;
     router.push(newUrl, { scroll: false });
   }
 
@@ -88,6 +81,18 @@ export default function FilterBar() {
     }
   }
 
+  useEffect(() => {
+    function handleCLick(event: MouseEvent) {
+      if (isCalendarActive && event.target && !stayContainerRef.current?.contains(event.target as Node)) {
+        setIsCalendarActive(false);
+      }
+    }
+
+    if (isCalendarActive) {
+      window.addEventListener("click", handleCLick);
+    }
+  }, [isCalendarActive]);
+
   return (
     <form className={styles.formContainer} method="GET">
       <div className={styles.searchPlaceInputContainer}>
@@ -96,12 +101,14 @@ export default function FilterBar() {
         </div>
         <input
           value={placeInputValue}
-          onChange={({ target }) => setPlaceInputValue(target.value)}
+          onChange={({ target }) => {
+            setPlaceInputValue(target.value);
+            if (target.value === "") deleteTitleParam();
+          }}
           className={styles.placeInput}
           placeholder="Onde você está indo?"
         />
       </div>
-
       <div className={styles.rightSide}>
         <div ref={stayContainerRef} className={styles.stayContainer} onClick={() => setIsCalendarActive(true)}>
           <div className="icon">
@@ -147,7 +154,6 @@ export default function FilterBar() {
             }
           />
         </div>
-
         <div className={styles.peopleAndBedContainer}>
           <div className={styles.peopleAndBedItem}>
             <input

@@ -1,4 +1,5 @@
 import { Room } from "@/@types/room";
+import ClearFiltersButton from "@/components/home/clear-filters-button";
 import FilterAside from "@/components/home/filter-aside";
 import FilterBar from "@/components/home/filter-bar";
 import Menu from "@/components/home/menu";
@@ -50,6 +51,7 @@ export default async function Home({ searchParams }: Props) {
       <div className={`${styles.listingContainer} container`}>
         <div className={styles.filterBarPosition}>
           <FilterBar />
+          <ClearFiltersButton />
         </div>
         <FilterAside />
         <RoomListing data={rooms || []} message={displayMessage} />

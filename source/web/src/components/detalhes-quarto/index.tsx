@@ -1,11 +1,12 @@
 "use client";
 
-import { AirVent, Coffee, Wifi } from "lucide-react";
-import styles from "./detalhes-quarto.module.css";
-import Comentario from "../comentarios";
 import Stars, { StarsAmount } from "@/components/stars";
+import { AirVent, Coffee, Wifi } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import Comentario from "../comentarios";
 import MapaEstatico from "../mapa";
+import styles from "./detalhes-quarto.module.css";
 
 export default function DetalhesQuarto() {
   const [nota, setNota] = useState<StarsAmount>(5);
@@ -14,7 +15,9 @@ export default function DetalhesQuarto() {
     <div className={styles.container}>
       <div className={styles.linha}>
         <span className={styles.span}>1 quarto • 2 hóspedes • 1 cama • 1 banheiro</span>
-        <button className={styles.button}>Chat com o proprietário</button>
+        <Link className={styles.button} href="/reserva">
+          Reservar
+        </Link>
       </div>
 
       <p className={styles.titulo}>Título do quarto</p>

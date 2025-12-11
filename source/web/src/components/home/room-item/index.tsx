@@ -81,8 +81,8 @@ export default function RoomItem(props: Props) {
             </div>
           </div>
         </div>
-        <Link className={styles.roomReserveButton} href="/reserva">
-          Reservar
+        <Link className={styles.roomReserveButton} href="/quarto">
+          Ver Detalhes
         </Link>
       </div>
     </div>
