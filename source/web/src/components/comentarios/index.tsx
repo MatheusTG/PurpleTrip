@@ -1,13 +1,13 @@
-import { Star } from "lucide-react";
-import styles from "./comentarios.module.css";
 import Stars, { StarsAmount } from "@/components/stars";
+import Image from "next/image";
 import { useState } from "react";
+import styles from "./comentarios.module.css";
 
 export default function Comentario() {
   const [nota, setNota] = useState<StarsAmount>(5);
   return (
     <div className={styles.card}>
-      <img src="/profile-image.jpg" alt="Foto do hóspede" className={styles.foto} />
+      <Image src="/profile-image.jpg" alt="Foto do hóspede" className={styles.foto} width={50} height={50} />
 
       <div>
         <div className={styles.topo}>
