@@ -4,16 +4,16 @@ import z from "zod";
 import db from "../../infra/database";
 import * as schema from "../../infra/db/schema";
 import { AppError } from "../errors/app-error";
-import { ExistsParams, IEntityRepository } from "./repository.interface";
+import { ExistsParams, IEntityRepository, TableWithIdAndEmail } from "./repository.interface";
 import { AnyPgTable } from "drizzle-orm/pg-core";
 
 type SchemaTables = typeof schema;
 type TableFromSchema = SchemaTables[keyof SchemaTables];
 
 export class RepositoryBase<TEntity> implements IEntityRepository<TEntity> {
-  table: AnyPgTable;
+  table: TableWithIdAndEmail;
 
-  constructor(table: AnyPgTable) {
+  constructor(table: TableWithIdAndEmail) {
     this.table = table;
   }
 
