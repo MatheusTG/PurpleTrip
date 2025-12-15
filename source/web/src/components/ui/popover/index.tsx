@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./popover.module.css";
 
 export type PopoverPosition = "top" | "bottom" | "left" | "right";
@@ -41,12 +41,12 @@ export default function Popover({
     onOpenChange?.(newState);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (!isControlled) {
       setInternalOpen(false);
     }
     onOpenChange?.(false);
-  };
+  }, [isControlled, onOpenChange]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -70,7 +70,7 @@ export default function Popover({
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [isOpen]);
+  }, [handleClose, isOpen]);
 
   return (
     <div className={`${styles.popover} ${className || ""}`} ref={popoverRef}>

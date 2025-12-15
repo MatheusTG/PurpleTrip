@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, date, boolean, pgEnum, timestamp, integer } from "drizzle-orm/pg-core";
+import { boolean, date, integer, pgEnum, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const profile_type = pgEnum("profile_type", ["QUEST", "HOST", "ADMIN"]);
 export const users = pgTable("users", {
@@ -45,10 +45,10 @@ export const rooms = pgTable("rooms", {
   dailyPrice: integer("daily_price").notNull(),
   cancellationPolicy: cancellationPolicy("cancellation_policy").notNull(),
   minimumStayDays: integer("minimum_stay_days").notNull().default(1),
-  maximumStayDays: text("maximum_stay_days"),
+  maximumStayDays: integer("maximum_stay_days"),
   isBlocked: boolean("is_blocked").notNull().default(false),
   apartmentNumber: text("apartment_number"),
-  maximumGuests: text("maximum_guests"),
+  maximumGuests: integer("maximum_guests"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

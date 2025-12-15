@@ -1,6 +1,6 @@
 import { UpdateUserData, User } from "@/@types/user.types";
 import { getToken } from "@/utils/auth";
-import { apiClient } from "./client";
+import { apiClient, Return } from "./client";
 
 export interface RegisterData {
   name: string;
@@ -11,14 +11,14 @@ export interface RegisterData {
   password: string;
 }
 
-export async function register(data: RegisterData): Promise<User> {
+export async function register(data: RegisterData): Promise<Return<User>> {
   return apiClient<User>("/api/users", {
     method: "POST",
     body: JSON.stringify(data),
   });
 }
 
-export async function getAllUsers(): Promise<User[]> {
+export async function getAllUsers(): Promise<Return<User[]>> {
   const token = getToken();
   return apiClient<User[]>("/api/users", {
     method: "GET",
@@ -26,14 +26,14 @@ export async function getAllUsers(): Promise<User[]> {
   });
 }
 
-export async function getUser(userId: string): Promise<User> {
+export async function getUser(userId: string): Promise<Return<User>> {
   const token = getToken();
   return apiClient<User>(`/api/users/${userId}`, {
     method: "GET",
     token: token || undefined,
   });
 }
-export async function updateUser(userId: string, data: UpdateUserData): Promise<User> {
+export async function updateUser(userId: string, data: UpdateUserData): Promise<Return<User>> {
   const token = getToken();
   return apiClient<User>(`/api/users/${userId}`, {
     method: "PUT",
@@ -42,7 +42,7 @@ export async function updateUser(userId: string, data: UpdateUserData): Promise<
   });
 }
 
-export async function deleteUser(userId: string): Promise<void> {
+export async function deleteUser(userId: string): Promise<Return<void>> {
   const token = getToken();
   return apiClient<void>(`/api/users/${userId}`, {
     method: "DELETE",

@@ -1,0 +1,2 @@
+ALTER TABLE "rooms" ALTER COLUMN "maximum_stay_days" SET DATA TYPE integer USING maximum_stay_days::integer;--> statement-breakpoint
+ALTER TABLE "rooms" ALTER COLUMN "maximum_guests" SET DATA TYPE integer USING maximum_guests::integer;

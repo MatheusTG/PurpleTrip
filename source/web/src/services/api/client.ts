@@ -6,18 +6,16 @@ export interface ApiError {
   errors?: Record<string, string[]>;
 }
 
-export class ApiClientError extends Error {
-  constructor(message: string, public status?: number, public errors?: Record<string, string[]>) {
-    super(message);
-    this.name = "ApiClientError";
-  }
-}
-
 export interface RequestOptions extends RequestInit {
   token?: string;
 }
 
-export async function apiClient<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
+export type Return<T> =
+  | { data?: T; message: string; status: number }
+  | { data: T; message?: string; status?: number }
+  | { data: null; message?: string; status?: number };
+
+export async function apiClient<T>(endpoint: string, options: RequestOptions = {}): Promise<Return<T>> {
   const { token, ...fetchOptions } = options;
 
   const headers: HeadersInit = {
@@ -26,7 +24,7 @@ export async function apiClient<T>(endpoint: string, options: RequestOptions = {
   };
 
   if (token) {
-    // @ts-ignore
+    // @ts-expect-error não encontra a propriedade Authorization
     headers["Authorization"] = `Bearer ${token}`;
   }
 
@@ -39,29 +37,33 @@ export async function apiClient<T>(endpoint: string, options: RequestOptions = {
     });
 
     if (!response.ok) {
+      console.log(response);
       const errorData = await response.json().catch(() => ({
         message: `Erro na requisição: ${response.status}`,
       }));
 
-      throw new ApiClientError(
-        errorData.message || `Erro na requisição: ${response.status}`,
-        response.status,
-        errorData.errors
-      );
+      return {
+        message: errorData.message || `Erro na requisição: ${response.status}`,
+        status: response.status,
+      };
     }
 
     // Se a resposta for 204 (No Content), retorna null
     if (response.status === 204) {
-      return null as T;
+      return { data: null, message: "No Content", status: 204 };
     }
 
     const data = await response.json();
-    return data.data as T;
+    return { data: data.data };
   } catch (error) {
-    if (error instanceof ApiClientError) {
-      throw error;
-    }
-
-    throw new ApiClientError(error instanceof Error ? error.message : "Erro de conexão com o servidor");
+    return {
+      message:
+        error instanceof Error
+          ? error.message.toLowerCase() == "fetch failed"
+            ? "Erro de conexão com o servidor"
+            : error.message
+          : "Erro de conexão com o servidor",
+      status: 500,
+    };
   }
 }

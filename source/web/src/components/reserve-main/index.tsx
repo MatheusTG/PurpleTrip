@@ -1,8 +1,22 @@
-import styles from "./reserve-main.module.css";
-import Image from "next/image";
+"use client";
+
+import { User } from "@/@types/user.types";
+import { getUser } from "@/utils/auth";
 import { Coffee, Fan, Star, Wifi } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import styles from "./reserve-main.module.css";
 
 export default function ReservaPrincipal() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    (() => {
+      const u = getUser();
+      setUser(u);
+    })();
+  }, []);
+
   return (
     <div className={styles.containerPagina}>
       <div className={styles.coluna}>
@@ -29,13 +43,7 @@ export default function ReservaPrincipal() {
       <div className={styles.coluna2}>
         <div className={styles.cartao}>
           <div className={styles.quartoInformacao}>
-            <Image
-              src="/hotel-image.jpg"
-              alt=""
-              width={150}
-              height={110}
-              className={styles.imagemHotel}
-            />
+            <Image src="/hotel-image.jpg" alt="" width={150} height={110} className={styles.imagemHotel} />
             <div>
               <p className={styles.tituloCartao}>Residencial Copacabana</p>
               <p className={styles.avaliacao}>
@@ -76,15 +84,17 @@ export default function ReservaPrincipal() {
         </div>
       </div>
 
-      <div className={styles.containerLogin}>
-        <p className={styles.textoLogin}>Entre ou cadastre-se para reservar</p>
-        <button className={styles.login}>Login</button>
-        <div className={styles.iconesMidias}>
-          <Image src="/google-icon.png" alt="" width={32} height={32} />
-          <Image src="/facebook-icon.jpg" alt="" width={32} height={32} />
-          <Image src="/apple-icon.jpg" alt="" width={32} height={32} />
+      {user ? null : (
+        <div className={styles.containerLogin}>
+          <p className={styles.textoLogin}>Entre ou cadastre-se para reservar</p>
+          <button className={styles.login}>Login</button>
+          <div className={styles.iconesMidias}>
+            <Image src="/google-icon.png" alt="" width={32} height={32} />
+            <Image src="/facebook-icon.jpg" alt="" width={32} height={32} />
+            <Image src="/apple-icon.jpg" alt="" width={32} height={32} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
