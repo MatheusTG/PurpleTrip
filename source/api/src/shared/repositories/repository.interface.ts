@@ -5,7 +5,7 @@ export type ExistsParams = { id: string; email?: string } | { id?: string; email
 
 export type TableWithIdAndEmail = AnyPgTable & {
   id: any;
-  email: any;
+  email?: any;
 };
 
 export interface IEntityRepository<TEntity> {

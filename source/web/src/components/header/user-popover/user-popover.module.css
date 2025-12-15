@@ -27,8 +27,25 @@
   cursor: pointer;
   transition: background-color 0.2s;
   text-align: start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .popoverItem:hover {
   background-color: var(--gray-200);
+}
+
+.sairButton {
+  color: var(--red-500);
+}
+
+@media (max-width: 768px) {
+  .usuarioContainer span {
+    display: none;
+  }
+
+  .popoverContent {
+    min-width: 130px;
+  }
 }

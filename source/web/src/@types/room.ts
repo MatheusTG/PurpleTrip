@@ -36,3 +36,13 @@ export type Room = {
   rating: number;
   numberOfReviews: number;
 };
+
+export type RoomFilters = {
+  minPrice?: string;
+  maxPrice?: string;
+  guestsNumber?: string;
+  stayDays?: string;
+  singleBeds?: string;
+  doubleBeds?: string;
+  title?: Room["title"];
+};

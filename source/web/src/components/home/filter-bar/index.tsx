@@ -2,16 +2,9 @@
 
 import styles from "./filter-bar.module.css";
 
-import {
-  ArrowRightIcon,
-  BedDoubleIcon,
-  CalendarDaysIcon,
-  SearchIcon,
-  SunMoonIcon,
-  UserIcon,
-} from "lucide-react";
+import { ArrowRightIcon, BedDoubleIcon, CalendarDaysIcon, SearchIcon, SunMoonIcon, UserIcon } from "lucide-react";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
@@ -19,8 +12,6 @@ import { addDays, differenceInDays, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { DateRange, Range } from "react-date-range";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
 
 export default function FilterBar() {
   const [isCalendarActive, setIsCalendarActive] = useState(false);
@@ -37,27 +28,36 @@ export default function FilterBar() {
 
   const stayContainerRef = useRef<HTMLDivElement | null>(null);
 
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    function handleCLick(event: MouseEvent) {
-      if (
-        isCalendarActive &&
-        event.target &&
-        !stayContainerRef.current?.contains(event.target as Node)
-      ) {
-        setIsCalendarActive(false);
-      }
-    }
-
-    if (isCalendarActive) {
-      window.addEventListener("click", handleCLick);
-    }
-  }, [isCalendarActive]);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    router.push("?teste=2");
+
+    const stayDays =
+      dateInterval[0].startDate && dateInterval[0].endDate
+        ? differenceInDays(dateInterval[0].endDate, dateInterval[0].startDate) + 1
+        : 0;
+    const params = new URLSearchParams(searchParams);
+
+    params.set("stayDays", stayDays.toString() || "2");
+    if (placeInputValue) params.set("title", placeInputValue);
+
+    const oldUrl = window.location.href;
+    const newUrl = pathname + `?${params.toString()}`;
+    if (oldUrl === newUrl) return;
+
+    router.push(newUrl, { scroll: false });
+  }
+
+  function deleteTitleParam() {
+    const params = new URLSearchParams(searchParams);
+    params.delete("title");
+    const oldUrl = window.location.href;
+    const newUrl = pathname + `?${params.toString()}`;
+    if (oldUrl === newUrl) return;
+    router.push(newUrl, { scroll: false });
   }
 
   function transformDateToString(date: Date) {
@@ -81,6 +81,18 @@ export default function FilterBar() {
     }
   }
 
+  useEffect(() => {
+    function handleCLick(event: MouseEvent) {
+      if (isCalendarActive && event.target && !stayContainerRef.current?.contains(event.target as Node)) {
+        setIsCalendarActive(false);
+      }
+    }
+
+    if (isCalendarActive) {
+      window.addEventListener("click", handleCLick);
+    }
+  }, [isCalendarActive]);
+
   return (
     <form className={styles.formContainer} method="GET">
       <div className={styles.searchPlaceInputContainer}>
@@ -89,58 +101,43 @@ export default function FilterBar() {
         </div>
         <input
           value={placeInputValue}
-          onChange={({ target }) => setPlaceInputValue(target.value)}
+          onChange={({ target }) => {
+            setPlaceInputValue(target.value);
+            if (target.value === "") deleteTitleParam();
+          }}
           className={styles.placeInput}
           placeholder="Onde você está indo?"
         />
       </div>
-
       <div className={styles.rightSide}>
-        <div
-          ref={stayContainerRef}
-          className={styles.stayContainer}
-          onClick={() => setIsCalendarActive(true)}
-        >
+        <div ref={stayContainerRef} className={styles.stayContainer} onClick={() => setIsCalendarActive(true)}>
           <div className="icon">
             <CalendarDaysIcon size={24} color="currentColor" />
           </div>
           <div className={styles.stayDates}>
             <span className={styles.dateText}>
-              {transformDateToString(
-                dateInterval[0].startDate
-                  ? new Date(dateInterval[0].startDate)
-                  : new Date()
-              )}
+              {transformDateToString(dateInterval[0].startDate ? new Date(dateInterval[0].startDate) : new Date())}
             </span>
             <div>
               <ArrowRightIcon size={16} color="currentColor" />
             </div>
             <span className={styles.dateText}>
-              {transformDateToString(
-                dateInterval[0].endDate
-                  ? new Date(dateInterval[0].endDate)
-                  : new Date()
-              )}
+              {transformDateToString(dateInterval[0].endDate ? new Date(dateInterval[0].endDate) : new Date())}
             </span>
           </div>
           <div className={styles.stayDaysNumberContainer}>
             <span className={styles.stayDayNumber}>
               {dateInterval[0].startDate &&
                 dateInterval[0].endDate &&
-                differenceInDays(
-                  dateInterval[0].endDate,
-                  dateInterval[0].startDate
-                ) + 1}
+                differenceInDays(dateInterval[0].endDate, dateInterval[0].startDate) + 1}
             </span>
             <div className="icon">
               <SunMoonIcon size={14} color="currentColor" />
             </div>
           </div>
           <DateRange
-            className={`${
-              isCalendarActive ? styles.dateRangeActive : styles.dateRange
-            }`}
-            onChange={(item) => setDateInterval([item.selection])}
+            className={`${isCalendarActive ? styles.dateRangeActive : styles.dateRange}`}
+            onChange={item => setDateInterval([item.selection])}
             ranges={dateInterval}
             direction="horizontal"
             locale={
@@ -149,15 +146,7 @@ export default function FilterBar() {
                 localize: {
                   ...ptBR.localize,
                   day: (n: number) => {
-                    const dias = [
-                      "dom",
-                      "seg",
-                      "ter",
-                      "qua",
-                      "qui",
-                      "sex",
-                      "sáb",
-                    ];
+                    const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
                     return dias[n];
                   },
                 },
@@ -165,7 +154,6 @@ export default function FilterBar() {
             }
           />
         </div>
-
         <div className={styles.peopleAndBedContainer}>
           <div className={styles.peopleAndBedItem}>
             <input

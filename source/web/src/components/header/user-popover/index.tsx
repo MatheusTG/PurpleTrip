@@ -3,6 +3,7 @@
 import { User } from "@/@types/user.types";
 import Popover from "@/components/ui/popover";
 import { getUser, logout } from "@/utils/auth";
+import { Home, LogOut, LucideUser2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -36,13 +37,16 @@ export default function UserPopover() {
         <>
           {pathname !== "/" && (
             <Link href="/" className={styles.popoverItem}>
+              <Home size={16} />
               Início
             </Link>
           )}
           <Link href="/anfitriao" className={styles.popoverItem}>
+            <LucideUser2 size={16} />
             Anfitrião
           </Link>
-          <button className={styles.popoverItem} onClick={logout}>
+          <button className={`${styles.popoverItem} ${styles.sairButton}`} onClick={logout}>
+            <LogOut size={16} />
             Sair
           </button>
         </>

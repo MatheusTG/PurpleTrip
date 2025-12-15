@@ -16,4 +16,7 @@
   position: absolute;
   width: max-content;
   margin: auto;
+  display: grid;
+  gap: 0.375rem;
+  z-index: 100;
 }

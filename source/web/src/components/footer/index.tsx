@@ -27,7 +27,7 @@ export default function Footer() {
         <div className={styles.coluna}>
           <h3 className={styles.titulo}>Mapa do Site</h3>
           <nav className={styles.links}>
-            <Link href="#" className={styles.botao}>
+            <Link href="/" className={styles.botao}>
               Quartos
             </Link>
             <Link href="#" className={styles.botao}>

@@ -109,6 +109,19 @@
   font: var(--font-02-xxxs);
 }
 
+.stayDaysInfo {
+  display: flex;
+  align-items: center;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--gray-200);
+  margin-top: 0.5rem;
+}
+
+.stayDaysLabel {
+  font: var(--font-02-xxs);
+  color: var(--gray-800);
+}
+
 .paymentAndGuestsContainer {
   display: flex;
   align-items: center;
