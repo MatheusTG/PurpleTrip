@@ -23,7 +23,7 @@ server.register(policiesRoutes, { prefix: "api" });
 
 setupErrorHandler(server);
 
-server.listen({ port }, error => {
+server.listen({ port, host: "0.0.0.0" }, error => {
   if (error) {
     console.error("Erro ao iniciar o servidor:", error);
     process.exit(1);
